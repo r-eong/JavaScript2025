@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>if 실습문제</title>
+</head>
+<body>
+    <h3>문제 : 온도가 0도 이하면 "영하", 0~30도는 : "보통", 30도 이상은 "더움"</h3>
+    <input id="box" type="text">
+    <button type="button" onclick="weather()">확인</button>
+    <p id="wtr"></p>
+    <script>
+        function weather(){
+            let tem = Number(document.getElementById('box').value);
+            let wtr = document.getElementById('wtr');
+            if(tem<=0)wtr.innerHTML = '영하';
+            // 0~30 = 0보다 크거나 같으면거 30보다 작거나 같다.
+            if(tem>0 && tem<=30)wtr.innerHTML = '보통';
+            if(tem>30)wtr.innerHTML = '더움';
+            // if(tem<=0){
+            //     wtr.innerHTML = '영하';
+            // }else if(tem>30){
+            //     wtr.innerHTML = '더움';
+            // }else{
+            //     wtr.innerHTML = '보통';
+            // }
+        }
+    </script>
+</body>
+</html>

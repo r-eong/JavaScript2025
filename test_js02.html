@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js 연산연습2</title>
+</head>
+<body>
+    <button type="button" onclick="problem2()">
+        문제2 : 두 수 더하기
+    </button>
+    <p id="p2"></p>
+    <script>
+        function problem2(){
+            let pri=document.getElementById('p2');
+            const number1=10;
+            const number2=5;
+            // console.log를 쓰는 이유 = 값의 에러의 존재 유무를 파악하기 위한 디버깅 용
+            console.log(`number1:${number1}, number2:${number2}`);
+            pri.innerHTML=`합계 : ${number1+number2}`;
+        }
+    </script>
+</body>
+</html>

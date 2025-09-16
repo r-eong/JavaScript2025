@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js 연산연습4</title>
+</head>
+<body>
+    <input id="num1" type="number" placeholder="숫자1">
+    <input id="num2" type="number" placeholder="숫자2">
+    <button type="button" onclick="compareNum()">비교</button>
+    <p id="output5"></p>
+    <script>
+        function compareNum(){
+            let num1 = Number(document.getElementById('num1').value);
+            let num2 = Number(document.getElementById('num2').value);
+            let res = document.getElementById('output5');
+            one = num1 > num2 ? 'true':'false';
+            two = num1 == num2 ? 'true':'false';
+            console.log(`one : ${one}, two : ${two}`);
+            res.innerText = `n1 > n2 ? ${one}, n1 == n2 ? ${two}`;
+            // consol 탭에선 > 기호가 &gt 로 출력됨
+        }
+    </script>
+</body>
+</html>

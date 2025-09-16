@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>직원 근무시간 급예 계산</h3>
+    <label>근무 시간 입력 : </label><input id="time1" type="text">
+    <button type="button" onclick="money()">급여 계산</button>
+    <p id="pay"></p>
+    <p id="mag"></p>
+    <p id="sts"></p> <!-- 급여: , 근무 메시지 : , 급여 상태 : 를 여기 썼었어야함! -->
+    <script>
+        // 전역변수 : 전 지역에서 사용하는 변수
+        // function 밖에 작성!
+        function money(){
+            // 지역변수 : 현재 지역(현재 funtion)에서 사용하는 변수
+            // function 안에 작성!
+            let time1 = Number(document.getElementById('time1').value);
+            let pay = document.getElementById('pay');
+            let mag = document.getElementById('mag');
+            let sts = document.getElementById('sts');
+
+            // 선생님거 쓴거임!
+            // const basePay = 10000;
+            // let realPay = time1 * basePay; //기본급
+            // let overtime = time1 - 8; //초과 시간 계산 ex) 10시간- 8시간 = 2시간 초과
+            // let overPay = overTime * basePay * 1.5;
+            // let payTotal = tealPay + overPay;
+
+            // if(time1 > 8){
+            //    let realPay = time1 * basePay; //기본급
+            //    let overtime = time1 - 8; //초과 시간
+            //    let overPay = overTime * basePay * 1.5;
+            //    let payTotal = tealPay + overPay;
+            // }else{
+            //    realPay = time1 * basePay;
+            // }
+
+            // 초기화 꼭 하기! 수치 변수화 시키기!
+            // let payTotal = 0; //초기화 
+            // realPay = 0; // 실급여
+            // let overTime = 0; // 숫자를 입력할 변수이기 때문에
+            // let overPay = 0; // 초과급여
+            // 그냥 노션을 확인하는게 나을듯!
+
+            // if = 급여
+            if(time1 <= 8){
+                // 이것들처럼 쓰면 안됨 수치를 변수화 시켜서 넣어야됨!
+                pay.innerHTML = `급여 : ${time1*10000}원`;
+                console.log(`기본 급여 출력`)
+            }else if(time1 > 8){
+                pay.innerHTML = `급여 : ${time1*10000 + (time1-8)*10000*0.5}원`;
+                console.log(`초과 급여 출력`)
+            }
+
+            // switch = 근무 메시지
+            switch(true){
+                case (time1==0):
+                mag.innerHTML = '근무 메시지 : 출근하지 않았습니다.';
+                console.log('출근하지 않았습니다. 출력');
+                break;
+                case (time1>=1&& time1<=8):
+                mag.innerHTML = '근무 메시지 : 정상 근무';
+                console.log('정상 근무 출력');
+                break;
+                case (time1>8):
+                mag.innerHTML = '근무 메시지 : 초과 근무';
+                console.log('초과 근무 출력');
+                break;
+            }
+
+            // 3항 연산자 = 급여 상태
+            let tt = 0;
+            tt <= 0 ? '급여 상태 : 무급' : '급여 상태 : 급여 있음';
+            sts.innerHTML= tt= 0 ? '급여 상태 : 무급' : '급여 상태 : 급여 있음';
+            console.log(`급여 상태 출력`);
+        }
+    </script>
+</body>
+</html>

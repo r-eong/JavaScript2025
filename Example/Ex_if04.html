@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>if 실습문제</title>
+</head>
+<body>
+    <h3>문제 : 사용자가 입력한 숫자가 1과 10 사이인지 확인</h3>
+    <input id="box" type="text">
+    <button type="button" onclick="betw()">확인</button>
+    <p id="between"></p>
+    <script>
+        function betw(){
+            let sid = Number(document.getElementById('box').value);
+            let between = document.getElementById('between');
+            if(sid>=1 && sid<=10){
+                between.innerHTML = '범위 안에 있음';
+            }else{
+                between.innerHTML = '범위 안에 없음';
+            }
+        }
+    </script>
+</body>
+</html>

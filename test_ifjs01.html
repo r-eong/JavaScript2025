@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>if 조건문</title>
+</head>
+<body>
+    <!-- 짝수/홀수 출력 = 콘솔 -->
+     <h1>JavaScript if</h1>
+     <script>
+        let num=3;
+        if(num % 2 == 0){
+            // 조건이 만족하는 true일때
+            console.log(num);
+        }else{
+            // 조건이 만족하지 않는 false 일때
+            console.log(`num : ${num}`);
+
+            // true 일때 = 3 / false 일때 = num : 3 으로 출력됨!
+        }
+
+        // 나이가 20이상이면 성인입니다. 아니면 미성년자 입니다.
+        // if ~ else
+        let age =20;
+        // 재할당
+        age=15;
+        if(age >=20){
+            console.log(`성인입니다.`);
+        }else{
+            console.log(`미성년자입니다.`);
+        }
+
+        // 다중 if = 조건이 2개 이상
+        // score 가 90이상:a, 80이상:b, 70이상c, 60이상:d, 그 이외:f
+        let score=90;
+        if(score>=90){
+            console.log('A');
+        }else if(score>=80){
+            console.log('B');
+        }else if(score>=70){
+            console.log('C');
+        }else if(score>=60){
+            console.log('D');
+        }else{
+            // 위 조건을 만족하지 않는 나머지 전부
+            console.log('F');
+        }
+
+        // 숫자 3개 중 최대값 찾기
+        // a=15, b=5, c=-1
+        let a=15;
+        let b=5;
+        let c=-1;
+        // 임시변수 = a값을 상수로 사용
+        let max = a;
+        if(b>max){
+            max=b;
+            console.log(`${max}`);
+        }
+        if(c>max){
+            max=c;
+            console.log(`${max}`);
+        }
+        console.log(`최대값 : ${max}`);
+        // if(a>b){
+        //     console.log('a');
+        // }else if(a>c){
+        //     console.log('a');
+        // }else if(b>a){
+        //     console.log('b');
+        // }else if(b>c){
+        //     console.log('b');
+        // }else{
+        //     console.log('c');
+        // }
+
+        // id='admin'이면서 pw='admin1234'이면
+        // 로그인 성공, 아니면 로그인 실패
+        // 관리자 아이디는 바뀌면 안돼서 무조건 const로!
+        const id='admin';
+        const pw='admin1234';
+        if(id=='admin' && pw=='admin1234'){
+            console.log(`로그인 성공`);
+        }else{
+            console.log(`로그인 실패`);
+        }
+
+        // 숫자 비교
+        // x=5, y=7 -> x가 y보다 크면 x, y가 x보다 크면 y
+        // x와 y가 같으면 같다
+        // let x=5, y=7; 이라고 써도 됨!
+        let x=5;
+        let y=7;
+        if(x>y){
+            console.log(`x`);
+        }else if(y>x){
+            console.log(`y`);
+        }else{
+            console.log(`같다`);
+        }
+
+        // 양수/음수/0 출력하기
+        // k=-1
+        let k=-1;
+        if(k>0)console.log(`양수`);
+        if(k<0)console.log(`음수`);
+        if(k==0)console.log(`0`);
+     </script>
+</body>
+</html>

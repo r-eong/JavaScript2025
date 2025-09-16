@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>if 실습문제</title>
+</head>
+<body>
+    <h3>문제 : 입력한 문자가 'y' 또는 'Y'면 '예', 아니면 '아니오'</h3>
+    <input id="box" type="text">
+    <button type="button" onclick="checky()">확인</button>
+    <p id="YorN"></p>
+    <script>
+        function checky(){
+            // value 속성은 input 안의 입력한 값을 읽어들인다.
+            let box = document.getElementById('box').value;
+            let YorN = document.getElementById('YorN');
+            if(box=='y'||box=='Y'){
+                YorN.innerHTML = '예';
+            }else{
+                YorN.innerHTML = '아니오';
+            }
+        }
+    </script>
+</body>
+</html>

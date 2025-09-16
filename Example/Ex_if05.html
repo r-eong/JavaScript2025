@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>if 실습문제</title>
+</head>
+<body>
+    <h3>문제 : 국어, 영어, 수학 평균이 70 이상이면 "합격", 아니면 "불합격"</h3>
+    <input id="kor" type="text">
+    <input id="eng" type="text">
+    <input id="math" type="text">
+    <button type="button" onclick="betw()">확인</button>
+    <p id="between"></p>
+    <script>
+        function betw(){
+            let kor = Number(document.getElementById('kor').value);
+            let eng = Number(document.getElementById('eng').value);
+            let math = Number(document.getElementById('math').value);
+
+            console.log('여기까지 ok') //버튼을 누르지 않으면 뜨지 않음!
+
+            // let between = document.getElementById('between');
+            let score = (kor + eng + math)/3;
+            if(score >= 70){
+                console.log('합격 출력됨')
+                between.innerHTML = '합격';
+            }else{
+                console.log('불합격 출력됨')
+                between.innerHTML = '불합격';
+            }
+        }
+    </script>
+</body>
+</html>

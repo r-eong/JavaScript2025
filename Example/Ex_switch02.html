@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>switch 연습문제</title>
+</head>
+<body>
+    <button type="button" onclick="fruit()">과일 가격</button>
+    <input type="text" id="frt">
+    <p id="output"></p>
+    <script>
+        function fruit(){
+            let fru = document.getElementById('frt').value;
+            let output = document.getElementById('output');
+            switch(fru){
+                case 'apple':
+                    console.log('해당 과일이 있습니다. 출력');
+                    output.innerHTML = '해당 과일이 있습니다.';
+                break;
+                case 'banana':
+                    console.log('해당 과일이 있습니다. 출력');
+                    output.innerHTML = '해당 과일이 있습니다.';
+                break;
+                case 'orange':
+                    console.log('해당 과일이 있습니다. 출력');
+                    output.innerHTML = '해당 과일이 있습니다.';
+                break;
+                default:
+                console.log('해당 과일은 없습니다. 출력');
+                output.innerHTML = '해당 과일은 없습니다.';
+                break;
+            }
+        }
+    </script>
+</body>
+</html>
