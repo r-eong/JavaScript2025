@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>while 연습문제</title>
+</head>
+<body>
+    <h1>문제 : 1부터 10까지 출력</h1>
+    <p id="output"></p>
+    <script>
+        let output = document.getElementById('output');
+        let n = 1;
+        // 결과를 담을 변수 초기화
+        let result = 0;
+        // n=1 현재 while 만족
+        while(n<=10){
+            // 0 + 1 + ' ' 
+            result = result + n + ' '; // <- ' ' 공백을 적는 이유는 다순히 띄어쓰기 해주기 위해!
+            // n++ 에서 0+1+1 =2 가 되어 다시 돌아와(루프)서 1+1+1 =3이 됨!
+            n++;
+        }
+        // n =11 이 되면 출력됨. n<=10 이니까 조건에 만족되지 않아 튕겨져 나옴!
+        output.innerHTML = result;
+    </script>
+</body>
+</html>

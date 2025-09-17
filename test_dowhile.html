@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>반복문 while</title>
+</head>
+<body>
+    <script>
+        // 전위 연산자 a++
+        // a = a + 1; <- 1씩 누적하는 누적공식
+        // a = 0; <- 초기값
+        // ┖> a = 1
+        // ┖> a = 2
+        // a = a + 3; => 3씩 누적
+
+        a = 1;
+        // 누적된 후에 b에 저장됨.
+        b = ++a;
+        console.log(b);
+
+        // 후의 연산자 => a++
+        c = 1;
+        // k에 저장된 후에 누적.
+        k = c++;
+        console.log(k);
+
+        // 1부터 5까지 출력하는 while문 작성
+        let num = 1; // 초기값
+        // while은 조건이 true면 루프돌고, 조건이 false가 되면 루프 탈출
+        while(num <= 5){
+            // num=1 -> num=1+1 =2 -> num=1+1+1 =3 -> num=1+1+1+1 =4 -> num=1+1+1+1+1 =5
+            console.log(num);
+            // 1씩 누적하는 코드가 필요
+            num++;
+        }
+        // 루프를 다 돌고 빠져나올때 +1이 됨!
+        console.log(`조건 false 후 : ${num}`);
+
+        // 10부터 1까지 거꾸로 출력하기
+        let qq = 10;
+        while(qq >= 1){
+            console.log(qq);
+            qq--;
+        }
+        console.log(`조건 false 후 : ${qq}`);
+
+        // 1부터 20까지 수 중 짝수의 값만 출력
+        // while, if 사용
+        let w = 1;
+        let count = 0; //조건에 만족하는 개수 세기 위한 변수 초기화
+        while(w<=20){
+            if(w % 2 == 0){
+                // w가 짝수냐 판별
+                console.log(w);
+                // 조건에 만족할 때 1씩 누적
+                count++;
+            }
+            // 20까지 가려면 누적 필요
+            w++;
+        }
+        console.log(`조건 false 후 : ${w}`);
+        console.log(`짝수의 개수 : ${count}`);
+
+        // 1부터 10까지의 합을 구하라
+        let e = 1;
+        // 합계를 구해 담을 변수 초기화
+        let sum = 0;
+        // 1+2+3+4+5+6+7+8+9+10 
+        while(e<=10){ // 조건을 만족할 때까지 
+            // sum을 구하는 공식
+            // sum = 0 + 1 -> 루프1
+            // sum = 1 + 2 -> 루프2
+            sum = sum + e;
+            // sum += e; 라고 써도 됨!
+            // 10까지 루프 돌리는 누적공식
+            e ++;
+            // e = 1(e) + 1
+        }
+        console.log(`합계 ${sum}`);
+
+        // do ~ while문은 조건의 만족 유무를 떠나 무조건 1번은 실행된다
+        // 1번 실행된 후 조건을 인식한다. true 일 때 루프돌고, false 일때 루프멈춤
+        let p=1;
+        do{
+            console.log('do while');
+        }while(p==0);
+    </script>
+</body>
+</html>
