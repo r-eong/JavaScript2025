@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연습문제</title>
+</head>
+<body>
+    <h1>문제 7 : 1부터 ~ n까지의 합</h1>
+    <input id="sum" type="text">
+    <button type="button" onclick="summ()">실행</button>
+    <p id="output"></p>
+    <script>
+        // 전역변수 = 지금 현재 스크립트 안의 모든곳에 사용 가능한 변수
+        let output = document.getElementById('output');
+        let result = ''; // 현재 입력할 값이 텍스트여서 '' 로 텍스트 초기화함
+        function summ(){
+            let sum = Number(document.getElementById('sum').value);
+            
+            let plus = 0;
+            for(let i=1; i<=sum; i++){
+                plus++;
+                plus = plus + i;
+            }
+            output.innerHTML = `1부터 ${sum}까지의 합 : ${plus}`;
+        }
+
+        // 다중 for문 = for ~ for (for안의 for) 존재함
+        // i=1 일때 j=1
+        // i=2 일때 j=1~2
+        // i=3 일때 j=1~3
+        for(let i=1; i<=3; i++){ // 바깥루프 = 가로줄 3회 루프
+            for(let j=1; j<=10; j++){ // 안쪽루프 = 세로줄 3회루프 <- 3회인 이유 : i=3이어서!
+                // \n = 줄바꿈
+                result += '*';
+            }
+            result += '<br/>';
+        }
+        output.innerHTML=result;
+    </script>
+</body>
+</html>

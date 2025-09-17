@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>직각삼각형 만들기</title>
+</head>
+<body>
+    <p id="output"></p>
+    <script>
+        let output = document.getElementById('output');
+        let star = '';
+        let s1 = 5;
+        for(let i=1; i<=s1; i++){
+            for(let j=1; j<=s1-i; j++){
+                star += '&nbsp;&nbsp;';
+            }
+            for(let k=1; k<=i; k++){
+                star += '*';
+            }
+            star += '<br/>';
+        }
+        output.innerHTML = star;
+    </script>
+</body>
+</html>

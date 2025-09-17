@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연습문제</title>
+</head>
+<body>
+    <h1>문제 : *로 역 직삼각형 만들기</h1>
+    <p id="output"></p>
+    <script>
+        let output = document.getElementById('output');
+
+        let star = '';
+        let star1 = 5; // 삼각형의 높이
+        for(let i=1; i<=star1; i++){
+            // 공백만 출력하는 for문
+            for(let j=1; j<=star1+i; j++){
+                star += '&nbsp';
+            }
+            // 별을 출력하는 for문
+            // 제일 첫 줄에 별은 1개만 출력
+            for(let k=i; k<=star1; k++){
+            star += '*';
+            }
+            star += '<br/>';
+        }
+        output.innerHTML = star;
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연습문제</title>
+</head>
+<body>
+    <h1>문제 10 : 2단 ~ 9단 출력</h1>
+    <input id="sum" type="text">
+    <p id="output"></p>
+    <script>
+        let output = document.getElementById('output');
+        let result = '';
+        // i=2일때 j=1부터 9까지 result 출력
+        // -> 다시 바깥 for 문으으로 증감 이동 i=3
+        // -> 조건 i=9를 만족하면 다시 안쪽 for문 j=1~9 출력 
+        for(let i=2; i<=9; i++){
+            result = result + i + '단<br/>';
+            for(let j=1; j<=9; j++){
+                // 2 X 1 = 2 형태의 출력
+                result = result + i + 'X' + j + '=' + i*j + '<br/>';
+            }
+            // 단과 단 사이의 줄바꿈
+            result = result + '<br/>';
+        }
+        output.innerHTML = result;
+    </script>
+</body>
+</html>
