@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array 기초연습문제</title>
+</head>
+<body>
+    <h1>문제 : names 배열 모든 요소 for문 출력</h1>
+    <p id="output"></p>
+    <script>
+        let output= document.getElementById('output');
+        let names = ['Jason', 'Alice', 'Candy', 'Chris'];
+        let result = ''; // 텍스트니까 '' 으로!
+        // i는 names 번호 방의 index번호를 대신하는 것!
+        for(let i=0;i<=names.length-1;i++){
+            result += names[i]+' ';
+        }
+        output.innerHTML = `4번 : ${result}`;
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>array 심화학습</title>
+</head>
+<body>
+    <h1>배열 + for문 + if문 문제</h1>
+    <label>4번 온도 배열 입력 (예: 15, 22, 30, 35, 18)</label>
+    <input type="text" id="ad">
+    <button type="button" onclick="Add()">결과 확인</button>
+    <p id="output"></p>
+    <script>
+        let addd = [];
+
+        function Add(){
+            let ad = document.getElementById('ad').value;
+            let output = document.getElementById('output');
+            addd = ad.split(',').map(Number);
+
+            let result = 0;
+            for(i=0;i<=addd.length-1;i++){
+                if(addd[i]>=30){
+                    result += addd[i] + ' : 뜨거움, ';
+                }else if(addd[i]>=20){
+                    result += addd[i] + ' : 적당, ';
+                }else{
+                    result += addd[i] + ' : 시원,';
+                }
+            }
+            output.innerHTML = result;
+        }
+    </script>
+</body>
+</html>

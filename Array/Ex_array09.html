@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>array 심화학습</title>
+</head>
+<body>
+    <h1>배열 + for문 + if문 문제</h1>
+    <label>2번 숫자 배열 입력 (예:12,7,5,20,33,18)</label>
+    <input type="text" id="scoreInput">
+    <button type="button" onclick="scoreClick()">결과 확인</button>
+    <p id="output"></p>
+    <script>
+        let scores=[];
+        function scoreClick(){
+            let scoreInput = document.getElementById('scoreInput').value;
+            let output = document.getElementById('output');
+            scores = scoreInput.split(',').map(Number);
+            console.log(scores);
+
+            let resultA = '';
+            let resultB = '';
+
+            for(let i=0;i<=scores.length-1;i++){
+                if(scores[i] % 2 == 0){
+                    resultA+=scores[i] + ', ';
+                }else if(scores[i] % 2 != 0){
+                    resultB+=scores[i] + ', ';
+                }
+            }
+            // 배열이름.slice(start arry, end array) => end array-1까지
+            // slice(start array, end array) => 양수 : 왼->오
+            // slice(start array, end array) => 음수 : 오->왼
+            resultA = resultA.slice(0,-2);
+            resultB = resultB.slice(0,-2);
+            output.innerHTML = `짝수 : ${resultA} / 홀수 : ${resultB}`;
+        }
+    </script>
+</body>
+</html>

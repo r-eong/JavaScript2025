@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array 기초연습문제</title>
+</head>
+<body>
+    <h1>문제 : arr for문 + if문 25 이상 출력</h1>
+    <p id="output"></p>
+    <script>
+        let output= document.getElementById('output');
+        let arr2 = [10, 20, 30, 40];
+        let result = ' ';
+
+        for(let i=0;i<=arr2.length-1;i++){
+            if(i >= 25){
+                result += arr2[i] + ' ';
+            }
+            console.log(arr2);
+            
+        }
+        output.innerHTML = `15번 : ${result}`;
+    </script>
+</body>
+</html>

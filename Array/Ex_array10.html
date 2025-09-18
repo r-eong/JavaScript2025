@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>array 심화학습</title>
+</head>
+<body>
+    <h1>배열 + for문 + if문 문제</h1>
+    <label>3번 출석 배열 입력(출석, 결석, 지각) (예 : 출석, 결석, 출석, 지각, 출석) : </label>
+    <input type="text" id="checK">
+    <button type="button" onclick="attendance()">결과 확인</button>
+    <p id="output"></p>
+    <script>
+        let attend = [];
+        function attendance(){
+            let checK = document.getElementById('checK').value;
+            let chE = document.getElementById('chE');
+            attend = checK.split(',');
+
+            let result = '';
+            for(i=0;i<=attend.length-1;i++){
+                // 자바스크립트는 같다를 ==로 쓰면 정확안 비교가 어려움.
+                // ===으로 써야 정확한 메모리값 비교.
+                // .trim() <= 왼쪽, 오른쪽 공백을 제거하는 함수.
+                if(attend[i].trim()==='출석'){
+                    result += '○, ';
+                }else if(attend[i].trim()==='결석'){
+                    result += 'X, ';
+                }else{
+                    result += '△, ';
+                }
+            }
+            output.innerHTML = result;
+        }
+    </script>
+</body>
+</html>

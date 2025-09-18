@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>array 심화학습</title>
+</head>
+<body>
+    <h1>배열 + for문 + if문 문제</h1>
+    <label>5번 장바구니 가격 배열 입력 (예: 12000, 5000, 3000, 7000) : </label>
+    <input type="text" id="moneyy">
+    <button type="button" onclick="money()">결과 확인</button>
+    <p id="output"></p>
+    <script>
+        let cart = [];
+        
+        function money(){
+            let moneyy = document.getElementById('moneyy').value;
+            let output = document.getElementById('output');
+            cart = moneyy.split(',').map(Number);
+
+            let result = '';
+            for(i=0;i<=cart.length-1;i++){
+                // trim()은 공백이라는 문자를 제거하는 함수.
+                if(cart[i]>=10000){ // .trim() 을 사용해봤자 효과가 없음! 사유 : 앞에서 Number로 만들어줘서!
+                    result += cart[i] + ' : 고가, ';
+                }else if(cart[i]>=5000){
+                    result += cart[i] + ' : 중저가, ';
+                }else{
+                    result += cart[i] + ' : 저가, ';
+                }
+
+                // 다른 방법!
+                // swith ~ case 1, case '출석' << case는 기본적으로 = 을 생략함 ex) case '출석' 은 case='출석'임!
+                // 다른 관계연산자 사용불가! ( > < >= <= != ...)
+                // swith(true) ~ case >= 10000
+                // switch(true){
+                //     case cart[i] >= 10000:
+                //         result += cart[i] + ' : 고가, ';
+                //     break;
+                //     case cart[i] >= 5000:
+                //         result += cart[i] + ' : 중저가, ';
+                //     break;
+                //     default: // else과 같은 역할. 그 이외의 모든 것!
+                //         result += cart[i] + '저가, ';
+                //     break;
+                // }
+            }
+            output.innerHTML = result;
+        }
+    </script>
+</body>
+</html>

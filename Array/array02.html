@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>array 메서드 연습</title>
+</head>
+<body>
+    <script>
+        // 1. 배열을 생성하고 마지막 요소 출력
+        let ani = ['강아지', '고양이', '토끼', '기린'];
+        console.log(ani[ani.length-1]);
+
+        // 2. 배열의 길이 출력
+        console.log('ani의 길이 : ', ani.length);
+
+        // 3. score 배열의 2번째 요소의 값을 바꾸기
+        let score=[60,50,75,90];
+        // 50을 95으로 변경
+        score[1] = 95;
+        console.log(score);
+
+        // 4. 배열의 push 메서드를 이용한 요소 추가
+        // method(메서드) = 함수
+        let rank = ['a','b','c','d'];
+        // 배열 메서드 사용 방법 : 배열이름.메서드이름( )
+        rank.push('f'); // push 메서드는 마지막에 추가됨
+        console.log(rank);
+        
+        // 5. 배열의 pop메서드를 이용한 요소 삭제
+        rank.pop();
+        console.log(rank); // 시퀀스처리 방식이라 콘솔로그 또 해야됨
+
+        // 6. 배열의 slice 메서드를 이용한 원하는 요소 출력
+        // slice(start array, end array)
+        // -> end array-1 의 위치까지 추출됨
+        // slice의 start, end 는 index 번호를 의미한다.
+        console.log(rank.slice(2,3));
+
+        // 7. 배열의 sort 메서드를 이용한 정렬
+        // 오름차순 정렬 : a - b
+        // 내림차순 정렬 : b - a
+        console.log(score.sort((a,b)=>a-b));
+        console.log(score.sort((a,b)=>b-a));
+
+        // number 배열을 생성한다.
+        // number =  [1,2,3,4,5]
+        // for문을 이용하여 합계를 계산한다.
+        // 변수는 numArr로 지정한다.
+        //  ┎index  : 0  1  2 3 4  index 번호는 0부터 시작임!
+        let number = [10,2,30,4,5];
+        let numArr = 0;
+        // for문의 조건에 number.length 에 -1을 하는 이유 
+        // : number 배열의 길이응 5개인데 실제로 0부터 시작하기 떄문에 4까지만 인식한다.
+        // 고로, -1을 하지 않을 시 5 뒤의 6번째 비어있는 값을 인식한다.
+        //  => 6번째는 빈방이므로 숫자가 아니다. 그러므로 더할 수 없다. => NaN 오류 출력됨.
+        // number.length-1 <= number의 마지막! 숫자 -1을 안 쓰면 공백으로 인식함!
+        for(let i=0;i<=number.length-1;i++){
+            // i=0 면 number[0] 는 1
+            // i=1 면 number[1] 는 2
+            // i=2 면 number[2] 는 3
+            // i=3 면 number[3] 는 4
+            // i=4 면 number[4] 는 5
+            numArr += number[i]; // 그냥 i라고 쓰면 안됨!
+        }
+        console.log('합계 : ',numArr);
+    </script>
+</body>
+</html>

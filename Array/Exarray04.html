@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array 기초연습문제</title>
+</head>
+<body>
+    <h1>문제 : 1~10 배열, 짝수만 출력 push 이용</h1>
+    <p id="output"></p>
+    <script>
+        let output= document.getElementById('output');
+        let nums=[];
+        let result = ' ';
+
+        // 1부터 10까지 nums 배열방의 push 하는 for문 작성
+        // 1번 for문에서 1~10까지를 추가함!
+        for(let i=1;i<=10;i++){
+            nums.push(i);
+            // console.log(nums); // <- 확인 위한 콘솔로그임!
+        }
+        // 위에서 push한 배열 nums의 값을 if로 비교하여 짝수만 출력
+        // 2번 for문에서 짝수로 거르고 공백을 삽입함!
+        // 1번문에서 nums[]에 들어간 1~10의 인덱스 0~9를 적은거임!
+        // nums.length-1 안써도 되지만 숫자로 쓰게되면
+        // 나중에 갯수같은 걸 수정하게 될 때 귀찮아짐! ex) j<=9(index 마지막 번호임!);
+        for(let j=0;j<=nums.length-1;j++){
+            if(nums[j] % 2 == 0){
+                result += nums[j] + ' ';
+            }
+        }
+        output.innerHTML = `5번 : ${result}`;
+    </script>
+</body>
+</html>

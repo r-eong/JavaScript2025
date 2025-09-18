@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>array 심화학습</title>
+</head>
+<body>
+    <h1>배열 + for문 + if문 문제</h1>
+    <label>점수 : 배열 입력 (예:90,70,50,60)</label>
+    <input type="text" id="scoreInput">
+    <button type="button" onclick="scoreClick()">결과 확인</button>
+    <p id="output"></p>
+    <script>
+        // 주어진 기본 배열
+        // let scores=[95,67,80,55,100,72]; // 굳이? 쓰는것같아서 지움!
+        let scores=[];
+        function scoreClick(){
+            // document로 변수화 하기
+            let scoreInput = document.getElementById('scoreInput').value;
+            let output = document.getElementById('output');
+            // input에 입력받는 값에 Number()함수를 사용하면 입력되는 값이 
+            // 이미 90,60 ... 이므로 문자이다. 고로, 숫자로 출력할 수 없다.
+            // 그래서 NaN 오류 출력됨. !,따옴표가 문자로 인식함!
+            // let scoreInput2 = Number(document.getElementById('scoreInput').value);
+            // , 삭제 = 배열이름.split(',');
+            // 배열 삭제 후 문자화됨. '90', '60'...가 됨
+            // 배열이름.map : 기존의 배열을 숫자화해 다시 배열을 만들어준다.
+            // scores = [90,60 ...]
+            // 자바스크립트는 문자가 아니라 문자열(String) 데이터 형식이다.
+            // String 문자열 객체
+            scores = scoreInput.split(',').map(Number);
+            // ┖> 새로운 scores=[input 입력받은 값들] 배열 탄생
+            console.log(scores);
+            let result = ''; // 결과값을 담는 변수
+
+            // 반복문
+            for(let i=0;i<=scores.length-1;i++){
+                // 90이상:a, 80이상:b, 70이상:c, 그이외:f
+                if(scores[i]>=90){
+                    result+=scores[i]+'점 : A, ';
+                }else if(scores[i]>=80){
+                    result+=scores[i]+'점 : B, ';
+                }else if(scores[i]>=70){
+                    result+=scores[i]+'점 : C, ';
+                }else{
+                    result+=scores[i]+'점 : F, ';
+                }
+            }
+            output.innerHTML = result;
+        }
+    </script>
+</body>
+</html>
