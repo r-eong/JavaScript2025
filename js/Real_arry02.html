@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배열( Array ) 총 복습 문제</title>
+    <style>
+        body{
+            text-align: center;
+            border: 1px solid #b7dfca;
+            border-radius: 10px;
+            width: 400px;
+            margin: 20px auto;
+            padding: 10px 0;
+        }
+        button{
+            background-color: transparent;
+            border: 1px solid #b7dfca;
+            background-color: #dcf3e7;
+            color: #028543;
+            border-radius: 5px;
+            padding: 5px 12px;
+        }
+        button:hover{
+            border: 1px solid #028543;
+            background-color: #028543;
+            color: #ffffff;
+        }
+        span{
+            color: #424242;
+        }
+        span.color1{
+            color: #0cbd64;
+        }
+        span.color2{
+            color: #eb0062;
+        }
+    </style>
+</head>
+<body>
+    <h3>책 재고 현황</h3>
+    <button type="button" onclick="books()">재고 확인</button>
+    <p id="output"></p>
+    <script>
+        let book = [10, 3, 7, 2];
+        let names = ['자바스크립트 입문', 'HTML&CSS', '파이썬 기초', '데이터 분석'];
+        function books(){
+            let output = document.getElementById('output');
+
+            let result = '';
+            for(i=0; i<=book.length-1; i++){
+                if(book[i] >= 5){
+                    result += names[i] + ' : ' + book[i] + '권 - <span class="color1">재고 충분</span>'
+                }else{
+                    result += names[i] + ' : ' + book[i] + '권 - <span class="color2">재고 부족</span>'
+                }
+                result += '<br/>'
+            }
+            output.innerHTML = result;
+        }
+    </script>
+</body>
+</html>

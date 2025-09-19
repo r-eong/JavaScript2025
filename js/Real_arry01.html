@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배열( Array ) 총 복습 문제</title>
+    <style>
+        body{
+            text-align: center;
+            border: 1px solid #cad1db;
+            border-radius: 10px;
+            width: 250px;
+            margin: 20px auto;
+            padding: 10px 0;
+        }
+        button{
+            background-color: transparent;
+            border: 1px solid #e6edf7;
+            background-color: #e6edf7;
+            color: #275697;
+            border-radius: 5px;
+            padding: 5px 12px;
+        }
+        button:hover{
+            border: 1px solid #e6edf7;
+            background-color: #4274b9;
+            color: #e6edf7;
+        }
+        span{
+            color: #424242;
+        }
+        span.color1{
+            color: #1579eb;
+        }
+        span.color2{
+            color: #eb6a00;
+        }
+    </style>
+</head>
+<body>
+    <h3>학생 성적표</h3>
+    <button type="button" onclick="student()">성적표 출력</button>
+    <p id="output"></p>
+    <script>
+        let score = [85, 58, 92, 77, 61];
+        let names = ['철수', '영희', '민수', '수지', '준호'];
+        function student(){
+            let output = document.getElementById('output');
+
+            let result = '';
+            for(i=0; i<=score.length-1; i++){
+                if(score[i] >= 60){
+                    result += names[i] + ' : ' + score[i] + '점 - <span class="color1">합격</span>'
+                }else{
+                    result += names[i] + ' : ' + score[i] + '점 - <span class="color2">불합격</span>'
+                }
+                result += '<br/>'
+            }
+            output.innerHTML = result;
+        }
+    </script>
+</body>
+</html>

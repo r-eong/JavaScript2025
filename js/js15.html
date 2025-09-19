@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연습</title>
+</head>
+<body>
+    <h3>숫자 배열에서 최대값을 찾아 출력하세요.</h3>
+    <script>
+        let heights = [150, 160, 145, 170, 165];
+        let max = heights[0];
+        let check = 0;
+
+        // 최대값 구하는 for문 작성
+        for(i=0;i<=heights.length-1; i++){
+            if(heights[i]>max){
+                max = heights[i];
+            }
+        }
+        console.log(max);
+    </script>
+</body>
+</html>

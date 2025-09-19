@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배열( Array ) 총 복습 문제</title>
+    <style>
+        body{
+            text-align: center;
+            margin: 20px auto;
+            border: 1px solid #7cb5f7;
+            border-radius: 10px;
+            width: 250px;
+            padding: 20px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h3{
+            color: #0d69d3;
+        }
+        button{
+            border: 1px solid #7cb5f7;
+            border-radius: 5px;
+            padding: 3px 15px;
+            background-color: #f3f9ff;
+            color: #0d69d3;
+        }
+        table{
+            border-collapse: collapse;
+            border: 1px solid #7cb5f7;
+            width: 200px;
+            height: 150px;
+            color: #0d69d3;
+        }
+    </style>
+</head>
+<body>
+    <h3>상품 가격 비교</h3>
+    <button type="button" onclick="tables()">상품 출력</button>
+    <p id="output"></p>
+    <script>
+        function tables(){
+            let won = [120000, 30000, 80000, 40000];
+            let names = ['노트북', '마우스', '모니터', '키보드'];
+            let result = '<table border="1"><tr><th>상품</th><th>가격</th><th>등급</th></tr>';
+
+            let output = document.getElementById('output');
+                for(i=0; i<=won.length-1; i++){
+                    if(won[i] >= 50000){
+                        result += `<tr><td>${names[i]}</td><td>${won[i]}</td><td>고가</td></tr>`;
+                        }
+                    result += `<tr><td>${names[i]}</td><td>${won[i]}</td><td>저가</td></tr>`;
+                }
+                result += '</table>';
+                output.innerHTML = result;
+        }
+    </script>
+</body>
+</html>

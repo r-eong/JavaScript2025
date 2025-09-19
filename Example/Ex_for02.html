@@ -6,18 +6,24 @@
     <title>while 연습문제</title>
 </head>
 <body>
-    <h1>문제 : 1부터 10까지 중 홀수 출력</h1>
+    <h1>문제 : 1부터 10까지 거꾸로 출력</h1>
     <p id="output"></p>
     <script>
+        // 10 9 8 7 6 5 4 3 2 1 
+        // 문제의 구조를 파악
+
         let output = document.getElementById('output');
-        let n = 1;
+        let n = 10;
         let result = 0;
-        for(let i=1; i<=10; i++){
-            result = result + n + ' ';
-            n++;
+        for(let i=10; i<=1; i--){
+            result += result;
+            n--;
         }
-        output.innerHTML = n;
-    </script>
+        output.innerHTML = n; 
     </script>
 </body>
 </html>
+
+
+
+해결못함

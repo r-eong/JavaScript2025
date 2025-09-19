@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연습</title>
+</head>
+<body>
+    <input type="text" id="pass1">
+    <input type="text" id="pass2">
+    <button type="button" onclick="subject()">확인</button>
+    <p id="output"></p>
+    <script>
+        // 버튼 클릭시 결과가 나올 수 있게
+        function subject(){
+            // 첫번째 input 상자 입력 - 영어점수
+            let eng = Number(document.getElementById('pass1').value);
+            // 두번째 input 상자 입력 - 수학점수
+            let math = Number(document.getElementById('pass2').value);
+            // p태그에 결과가 나올 수 있게
+            let output = document.getElementById('output');
+
+            // if문으로 조건 생성
+            if(eng>=50 && math>=40){
+                // 결과 문구
+                output.innerHTML = '통과!';
+            }else{
+                output.innerHTML = '통과X';
+            }
+        }
+    </script>
+</body>
+</html>
