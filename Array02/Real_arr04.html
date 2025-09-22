@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습문제</title>
+</head>
+<body>
+    <h3>상품 재고 현황</h3>
+    <script>
+        let stock = [
+        [10, 5, 8, 12], // 과일
+        [20, 15, 18, 25], // 음료
+        [30, 25, 28, 15]  // 간식
+        ];
+        let result = 0;
+        for(let i=0; i<stock.length; i++){
+            result = 0;
+            avg = 0;
+            for(let j=0; j<stock[i].length; j++){
+                result += stock[i][j];
+            }
+            console.log(`카테고리${i+1} : ${stock[i]} | 총 재고 : ${result}`);
+        }
+    </script>
+</body>
+</html>

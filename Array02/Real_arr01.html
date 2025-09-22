@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습문제</title>
+    <style>
+        table{
+            border-collapse: collapse;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h3>1. 좌석 배치표 (5x5)</h3>
+    <p id="output"></p>
+    <script>
+        let result = '<table border="1">';
+        let output = document.getElementById('output');
+        let arr = Array.from(Array(5),()=>new Array(5));
+        
+        // 분석
+        // 1  2  3  4  5
+        // 6  7  8  9  10
+        // 11 12 13 14 15
+        // 16 17 18 19 20
+        // 21 22 23 24 25
+        
+        let num = 0;
+        for(let i=0; i<arr.length;i++){  // 행
+            result += '<tr>';
+            for(j=0; j<arr[i].length; j++){  // 열
+                arr[i][j] = ++num;  // 전이연산자
+                result += `<td> ${num} </td>`;
+            }
+            result += '</tr>';
+            console.log(arr[i]);
+        }
+        result +='</table>'
+        output.innerHTML = result;
+    </script>
+</body>
+</html>

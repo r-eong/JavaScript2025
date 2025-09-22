@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습문제</title>
+</head>
+<body>
+    <h3>성적 분석 프로그램</h3>
+    <p id="output"></p>
+    <script>
+        let output = document.getElementById('output');
+
+        let names = ['홍길동', '개나리', '진달래'];
+        let subjects = ['국어', '영어', '수학'];
+        let scores = [
+        [85, 90, 78], // 홍길동
+        [92, 88, 95], // 개나리
+        [76, 85, 83] // 진달래
+        ];
+
+        let sum = 0;
+        let svg = 0;
+        let result = '';
+        
+        // 학생별 총점과 평균
+        result += `[학생별 총점과 평균]`;
+        for(let i=0; i<scores.length; i++){
+            sum = 0;
+            avg = 0;
+            for(let j=0; j<scores[i].length; j++){
+                sum += scores[i][j];
+                avg = sum / scores[i].length;
+            }
+            console.log(`${names[i]} 총점 : ${sum}, 평균 : ${avg.toFixed(1)}`);
+            result += `<br/>${names[i]} 총점 : ${sum}, 평균 : ${avg.toFixed(1)}`;
+        }
+
+        // 과목별 평균 (국어, 영어, 수학)
+        // 과목별 평균 = 85 + 92+ 76 / 3
+        result += `<br/><br/>`;
+        result += `[과목별 평균]`;
+        let subavg = 0;
+        let subsum = 0;
+        for(let i=0; i<scores.length; i++){
+            subavg = 0;
+            subsum = 0;
+            // i=0, j=0, 1, 2
+            //scores[i][j](x), scores[j][i](o) => scores[1][0]  <- 가로가 아닌 세로로 내려가야하니까 j부터!
+            for(let j=0; j<scores[i].length; j++){
+                subsum += scores[j][i];
+                subavg = subsum / scores.length;
+            }
+        console.log(`${subjects[i]} 평균 : ${subavg.toFixed(1)}`);
+        result += `<br/> ${subjects[i]} 평균 : ${subavg.toFixed(1)}`;
+        }
+
+        // 최고 점수를 받은 학생의 이름과 점수
+        result += `<br/><br/>`;
+        result += `[최고 점수 학생]`;
+        let max = 0;
+        let check1 = '';
+      
+        for(let i=0; i<scores.length; i++){
+            for(let j=0; j<scores[i].length; j++){
+                // i=0,j=0 : 85 > 0 => max =85
+                if(scores[i][j]>max){
+                    max = scores[i][j];
+                    // max = @ , 이름 @, 점수 최대값의 index 번호 찾기
+                    check1 = i;
+                }
+            }
+        }
+        console.log(`${names[check1]} : ${max}점`);
+        result += `<br/>${names[check1]} : ${max}점`;
+
+        output.innerHTML = result;
+    </script>
+</body>
+</html>

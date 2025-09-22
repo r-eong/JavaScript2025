@@ -49,8 +49,9 @@
                 for(i=0; i<=won.length-1; i++){
                     if(won[i] >= 50000){
                         result += `<tr><td>${names[i]}</td><td>${won[i]}</td><td>고가</td></tr>`;
-                        }
-                    result += `<tr><td>${names[i]}</td><td>${won[i]}</td><td>저가</td></tr>`;
+                    }else{
+                        result += `<tr><td>${names[i]}</td><td>${won[i]}</td><td>저가</td></tr>`;
+                    }
                 }
                 result += '</table>';
                 output.innerHTML = result;

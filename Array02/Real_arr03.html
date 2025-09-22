@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습문제</title>
+    <style>
+        table{
+            border-collapse: collapse;
+            text-align: center;
+            width: 300px;
+            height: 220px;
+        }
+        th{
+            background-color: #ecf4ff;
+        }
+    </style>
+</head>
+<body>
+    <h3>3. 달력 만들기 (6x7)</h3>
+    <p id="output"></p>
+    <script>
+        let output = document.getElementById('output');
+
+        let result = '<table border="1">';
+        const weekdays = ['일', '월', '화', '수', '목', '금', '토'];
+        let arr = Array.from(Array(6),()=>new Array(7));
+
+        let num = 0;
+
+        // 요일
+        result += '<tr>';
+        for(let i=0; i<weekdays.length; i++){
+            result += '<th>' + weekdays[i] + '</th>';
+        }
+        result += '<tr/>';
+
+        // 날짜
+        for(let i=0; i<arr.length; i++){
+            result += '<tr>';
+                for(j=0; j<arr[i].length; j++){
+                    arr[i][j] = ++num;
+                    // result += `<td>${num} </td>`;
+                    if(num <32){
+                        result += `<td>${num}</td>`;
+                    }else{
+                        result += `<td> </td>`
+                    }
+                }
+                if(num > 32) break; // 멈추고 빠져나와!
+            result += '</tr>';
+            console.log(arr[i]);
+        }
+        result += '</table>'
+        output.innerHTML = result;
+    </script>
+</body>
+</html>

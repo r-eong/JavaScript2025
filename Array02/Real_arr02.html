@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습문제</title>
+</head>
+<body>
+    <h3>2. 성적표 (총점과 평균 계산)</h3>
+    <script>
+        let scores = [[85, 90, 80], [70, 60, 75], [95, 100, 90]];
+        let result = 0;
+        let average = 0;
+        for(let i=0; i<scores.length; i++){
+            result = 0;
+            average = 0;
+            for(let j=0; j<scores[i].length; j++){
+                result += scores[i][j];
+                average = result / scores[i].length;
+            }
+            console.log(`학생${i+1} : ${scores[i]} | 총 점 : ${result} | 평균 : ${average.toFixed(2)}`);
+        }
+    </script>
+</body>
+</html>
