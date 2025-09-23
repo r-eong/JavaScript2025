@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date() 객체 연습문제</title>
+    <style>
+        button{
+            color: #3358cf;
+            background-color: transparent;
+            border-radius: 5px;
+            border: 1px solid #3358cf;
+            padding: 5px 10px;
+            display: flex;
+            margin: 10px;
+        }
+        button:hover{
+            cursor: pointer;
+            background-color: #3358cf;
+            color: #f3f6ff;
+        }
+        p{
+            color: #3358cf;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="showYear1()">1. 현재 연도 출력</button>
+    <button onclick="showYear2()">2. 오늘 요일 출력</button>
+    <button onclick="showYear3()">3. 현재 시간 출력</button>
+    <button onclick="showYear4()">4. 특정 날짜까지 남은 일수 계산</button>
+    <button onclick="showYear5()">5. 하루 후, 일주일 후 날짜 출력</button>
+    <p id ="output"></p>
+    <script>
+        let today = new Date();
+
+        // showYear3();  // 아래 생성된 함수를 위에서 불러오는 건 자바스크립트에 호이스팅 문제로 안될떄가 많다.
+
+        // 문제: 현재 날짜를 Date 객체로 가져와서 콘솔에 "올해는 2025년입니다." 형식으로 출력하세요.
+        function showYear1(){
+            let output = document.getElementById('output');
+            let year01 = today.getFullYear();
+            output.innerHTML = `올해는 ${year01}년 입니다.`
+        }
+    
+        // 문제: 현재 날짜를 이용하여 오늘 요일을 한글로 출력하세요.
+        // 예: "오늘은 화요일입니다."
+        function showYear2(){
+            let weeks = ['일','월','화','수','목','금','토']
+            let weekdays = today.getDay();
+            let wee = '';
+            for(i=0; i<weeks.length; i++){
+                if(i === weekdays){
+                    wee = weeks[i];
+                    break;
+                }
+            }
+            output.innerHTML = `오늘은 ${wee}요일 입니다.`;
+        }
+
+        // 문제: 현재 시간을 시:분:초 형식으로 출력하세요.
+        // 예: "현재 시간: 14:35:20"
+        function showYear3(){
+            let hours = today.getHours();
+            let minutes = today.getMinutes();
+            let seconds = today.getSeconds();
+            output.innerHTML = `${hours} : ${minutes} : ${seconds}`;
+        }
+
+        // 문제: 내 생일까지 남은 일수를 계산하여 출력하세요.
+        // 예: "생일까지 120일 남았습니다."
+        function showYear4(){
+            let birth = new Date('2026/06/27/00:00:00');
+            today.setHours(0,0,0,0);  // 0시 00분 00초로 시간 초기화
+            birth.setHours(0,0,0,0);
+            birthCount = birth - today;
+            output.innerHTML = '생일까지 ' + (birthCount / 86400000).toFixed(0) + '일 남았습니다.';
+        }
+
+        // 문제: 오늘 날짜를 기준으로 하루 후와 일주일 후 날짜를 출력하세요.
+        function showYear5(){
+            let oneDay = new Date(today);
+            oneDay.setDate(today.getDate()+1);
+            let oneWeek = new Date(today);
+            oneWeek.setDate(today.getDate()+7);
+            output.innerHTML = `하루 후 : ${oneDay}<br/>일주일 후 : ${oneWeek}`
+        }
+
+        // 함수 호출. 버튼을 누르지 않아도 출력됨!
+        // showYear1();
+    </script>
+</body>
+</html>

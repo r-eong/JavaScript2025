@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>달력</title>
+</head>
+<body>
+    <div id="container">
+        <button type="button" onclick="leftBtn()"><</button>
+        <h3 id="dateOutput"></h3>
+        <button type="button" onclick="rightBtn()">></button>
+        <p id="output"></p>
+    </div>
+    <script>
+        let output = document.getElementById('output');
+        let week = ['SUN','MON','TUE','WED','THU','FRI','SAT'];
+        let result = '<table border="1">';
+            let arr = Array.from(Array(6),()=>new Array(7));
+            
+            // 날짜 배열
+            let dayArray = [];
+            let day = new Date();
+            let years = day.getFullYear();
+            let month = day.getMonth();
+            let today = day.getDate();
+            console.log(today);
+            
+        function leftBtn(){
+            let num = 0;
+            
+            // 요일
+            result += '<tr>';
+                for(let i=0; i<week.length; i++){
+                    result += '<th>' + week[i] + '</th>';
+                }
+                result += '</tr>';
+                
+            // 날짜
+            // 1일 산출
+            let days = new Date('2025/09/01');
+            result += '<tr>';
+            let Dday = 0;
+            for(let i=0; i<6; i++){
+                for(let j=0; j<7; j++){
+                    if(i===0 && j < today){
+                        result += '<td></td>';
+                    }
+                }
+            }
+            result += '</tr>';
+            console.log(todays);
+
+            // for(let today=1; today<=31; today++){
+            //     dayArray.push(today);
+            // }
+                
+            for(let i=0; i<dayArray.length; i++){
+                result += '<tr>';
+                    for(let j=0;j<7; j++){
+                        dayArray[i][j] = ++num;
+                    }
+                result += '</tr>';
+            }
+        }
+        result += '</table>'
+        output.innerHTML = result;
+    </script>
+</body>
+</html>

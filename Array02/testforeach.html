@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>forEach문</title>
+</head>
+<body>
+    <script>
+        // foreach() : 배열전용 각 요소를 한 번씩 순회하는 함수.
+        // 사용 형식
+        // forEach((value(값), index(값의 위치), array(전체배열))=>{실행문})
+        // 순서가 중요함. value-> index->array
+
+        let arr02 = [10,20,30];
+        arr02.forEach((value, index, array) => {
+            console.log(`${index} : ${value}`);
+            console.log(`${array}`);
+        });
+
+
+        let arr03 = ['apple', 'banana','cherry'];
+        arr03.forEach((fu, i, array)=>{
+            console.log(fu);
+        });
+
+        // map() => 콜백함수에서 return(반황=되돌려받는다)하는 값들로 
+        // 새로운 배열을 생성하여 반환한다. 배열전용 순환 함수.
+        let arr05=[1,2,3];
+        // teturn을 반환하는 콜백함수 지정
+        let doudled = arr05.map((value)=>{
+            console.log('map 값' + value);
+            return value*10;
+        })
+        console.log('retuen 값' + doudled);
+
+        // 단어를 대문자로 변경
+        // toUpperCase() : 대문자 변경 메소드
+        // toLowerCase() : 소문자 변경 메소드
+        let words = ['apple', 'grape', 'banana'];
+        // map() 함수를 이용하여 모두 대문자로 출력할 것 
+        let uppers = words.map((item)=>{
+            return item.toUpperCase();
+        })
+        // map()은 할 줄 코딩일 때 return 생략 가능
+        // return 반환 값이 없을 때 종료의 기능 포함.
+        // let uppers = words.map((item)=>{item.toUpperCase();})
+        console.log(uppers);
+    </script>
+</body>
+</html>

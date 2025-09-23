@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date 코어객체 설명</title>
+</head>
+<body>
+    <script>
+        // 객체(object)란? 자바스크립트에 내장된 함수이다.
+        // Array, Date, String, Math 등이 존대한다. // 대문자가 특징!
+        // 객체는 new Date() 으로 생성하여 사용한다.
+
+        let today = new Date();  // Date 객체를 new로 생성하여 변수 today에 담기
+        // ┖> 오늘 날짜 : Tue Sep 23 2025 11:04:33 GMT+0900 (한국 표준시)
+        console.log(`오늘 날짜 : ${today}`);
+        // typeof 변수이름 -> 변수에 해당하는 데이터의 타입이 출력됨
+        console.log(typeof today);
+        // ┖> object
+
+        let OneDate = new Date(86400000);
+        // ┖> Fri Jan 02 1970 09:00:00 GMT+0900 (한국 표준시)  << 9시인 이유 : 우리나라는 세계표준시간보다 9시간 느려서!
+        // Date(값) <- 값을 넣으면 1970/01/01 부터 값을 계산한다.
+        // 86,400,000 = 1day(하루)를 의미한다.
+        // 1s = 1,000ms
+        // 1m -> 60s * 1,000ms = 60,000ms
+        // 1h -> 60m * 60,000ms = 3,600,000ms
+        // 1d -> 24h * 3,600,000ms = 86,400,000ms
+        console.log(OneDate);
+
+        // Date() <- 함수 안의 값=인수
+        // 인수 날짜와 시간 문제열로 입력
+        let date01 = new Date('september 08, 2025, 14:00:00') ;
+        // ┖> Mon Sep 08 2025 14:00:00 GMT+0900 (한국 표준시)
+        console.log(date01);
+        
+        let date02 = new Date('2025/09/08/14:10:20');
+        // ┖> Mon Sep 08 2025 14:10:20 GMT+0900 (한국 표준시)
+        // 작성하기 편하고 가독성있음! 하지만? 결과는 같음!
+        console.log(date02);
+        
+        // new Date(year, month, day, hour, minute, second, millisecond)
+        // 자바스크립트에서 8월은 9월. 이유 : 0부터 시작인데 8이라고 적어서!
+        let date03 = new Date(2024, 8);
+        // ┖> Sun Sep 01 2024 00:00:00 GMT+0900 (한국 표준시)
+        console.log(date03);
+
+        // Date 생성자 new 연산자 없이 작성
+        // 결과값을 문자열로 반환한다.
+        let today02 = Date();
+        // ┖> Tue Sep 23 2025 11:36:37 GMT+0900 (한국 표준시)
+        console.log(today02);
+        // typeof 변수이름 -> 변수에 해당하는 데이터의 타입이 출력됨
+        console.log(typeof today02);
+        // ┖> string
+
+        // 오늘 날짜, 시간을 동시에 출력
+        let now = Date.now();  // .now() <- 프로퍼티=메소드=함수
+        console.log(now / 86400000 / 365);
+        // console.log(now); -> 1758595461413 = 1970/01/01 부터의 시간계산
+        // console.log(now / 86400000 / 365); -> 55.764696750253684 -> 1970/01/01 +55 -> 2025
+
+        // Date. parse
+        let d= Date.parse('Jan 2, 1970 00:00:00 UTC');  // UTC = 세계 협정 시간
+        // ┖> 86400000  << 하루가 지남!
+        console.log(d);
+
+        // Date의 메서드를 이용해서 get~ : 출력, Set~ : 수정
+        // getter, setter <- 출력,수정하는 것을 부르는 방식
+        let today03 = new Date();
+        // 오늘 날짜의 연도만 추출하고 싶음
+        let year01 = today03.getFullYear();
+        console.log('오늘 날짜의 연도 : ' + year01);
+        // ┖> 오늘 날짜의 연도 : 2025
+
+        // 날짜의 년도 수정
+        let today04 = new Date();
+        today04.setFullYear(2000);  // 오늘 날짜의 연도를 2000년으로 수정
+        // ┖> Sat Sep 23 2000 11:57:24 GMT+0900 (한국 표준시)
+        let year02 = today04.getFullYear();
+        // setFullYear로 수정하고 getFullYear로 출력한다.
+        console.log(year02);
+        // ┖> 2000
+
+        // 오늘 날짜의 월을 3월로 변경하여 날짜 출력
+        let today05 = new Date();
+        // 월 : 1월=0, 2월=1, 3월=3 ... index랑 같은 방식!
+        today05.setMonth(2);
+        let month01 = today05.getMonth();
+        console.log(month01, today05);
+        // ┖> 3 Wed Apr 23 2025 12:02:46 GMT+0900 (한국 표준시)
+
+        // 월과 일을 지정(=수정)
+        let today06 = new Date();
+        today06.setMonth(11,1);
+        let month02 = today06.getMonth();
+        let day02 = today06.getDay();
+        let date05 = today06.getDate();
+        console.log(month02, day02, date05, today06);
+        // ┖> 11 1 1 Mon Dec 01 2025 12:08:01 GMT+0900 (한국 표준시)
+
+        // 요일 출력
+        let today07 = new Date();
+        // 요일출력 메서드 : getday = 0(일요일) ~ 6(토요일)
+        // 요일의 년, 월, 일 : getDate = 2025-09-25 -> 25 출력
+        let wee =['일','월','화','수','목','금','토'];
+        let weekdays = today07.getDay();
+        // for문으로 일~토 까지 요일을 wee 배열을 이용하여 출력하세요
+        let week = '';  // 요일을 담을 변수
+        for(i=0; i<wee.length; i++){
+            if(i===weekdays){
+                week = wee[i];
+                break;
+            }
+        }
+        console.log(week);
+        // ┖> 화
+
+        
+    </script>
+</body>
+</html>

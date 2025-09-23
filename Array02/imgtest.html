@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이미지 반복 출력</title>
+    <style>
+        h2{
+            text-align: center;
+        }
+        .img-container{
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .card{
+            text-align: center;
+        }
+        .img-container .card img{
+            width: 200px;
+            height: 150px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #bee7ff;
+        }
+    </style>
+</head>
+<body>
+    <h2>이미지 출력</h2>
+    <div class="img-container" id="grally"></div>
+    <script>
+        let grally = document.getElementById('grally');
+
+        // 5행 2열
+        let imgList = [
+            ["https://picsum.photos/id/1011/400/300","산"],
+            ["https://picsum.photos/id/1025/400/300","강아지"],
+            ["https://picsum.photos/id/1003/400/300","건물"],
+            ["https://picsum.photos/id/1035/400/300","해변"],
+            ["https://picsum.photos/id/1040/400/300","숲"]
+        ];
+
+        for(let i=0; i<imgList.length; i++){  // 행 5번 루프
+            for(j=0; j<imgList[i].length; j++){  //열 2번 루프
+                if(j===0){
+                    // 빽틱 안에서는 무조건 큰따옴표 사용! " "
+                    grally.innerHTML += `<div class="card">
+                        <img src="${imgList[i][j]}" alt = "${imgList[i][1]}">
+                        <p>${imgList[i][1]}</p></div>`;
+                }
+            }
+        }
+    </script>
+</body>
+</html>
