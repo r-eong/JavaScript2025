@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math 연습문제</title>
+</head>
+<body>
+    <h3>단어 길이 비교하기</h3>
+    <button type="button" onclick="name00()">정답 보기</button>
+    <p id="output"></p>
+    <script>
+        let output = document.getElementById('output');
+        let ap = 'apple';
+        let apMax = ap.length;
+        let wa = 'watermelon';
+        let waMax = wa.length;
+        console.log(apMax, waMax);
+        function name00(){
+            if(apMax > waMax){
+                output.innerHTML = `더 긴 단어 : ${ap} (길이 : ${apMax}개)`
+            }else{
+                output.innerHTML = `더 긴 단어 : ${wa} (길이 : ${waMax}개)`
+            }
+        }
+    </script>
+</body>
+</html>

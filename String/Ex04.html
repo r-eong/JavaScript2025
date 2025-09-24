@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math 연습문제</title>
+</head>
+<body>
+    <h3>랜덤 비밀번호 생성기 (간단)</h3>
+    <button type="button" onclick="name00()">정답 보기</button>
+    <p id="output"></p>
+    <script>
+        let output = document.getElementById('output');
+        let text01 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+        function name00(){
+            let pw = ''; //초기화
+            for(let i=0; i<5; i++){
+              let idx = Math.floor(Math.random()*text01.length);
+                console.log(idx);
+                // console.log(text01[idx]);
+                pw += text01[idx];
+            }
+            output.innerHTML = pw;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math 연습문제</title>
+</head>
+<body>
+    <h3>문자열 공백 제거 후 길이 출력</h3>
+    <button type="button" onclick="name00()">정답 보기</button>
+    <p id="output"></p>
+    <script>
+        let output = document.getElementById('output');
+        function name00(){
+            let java = " Hello JavaScript ";
+            let hello = java.trim();
+
+            output.innerHTML = `공백 제거 후 : [${hello}], 길이 : ${hello.length}개`;
+        }
+    </script>
+</body>
+</html>

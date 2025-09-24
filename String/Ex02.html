@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math 연습문제</title>
+</head>
+<body>
+    <h3>랜덤 문자열 추출</h3>
+    <button type="button" onclick="name00()">정답 보기</button>
+    <p id="output"></p>
+    <script>
+        let output = document.getElementById('output');
+        let java = 'JavaScript';
+        function name00(){
+            for(i=0; i<java.length; i++){
+                Ja = java.charAt(Math.random()*java.length);
+            }
+            output.innerHTML = `뽑힌 글자 : ${Ja}`;
+        }
+    </script>
+</body>
+</html>

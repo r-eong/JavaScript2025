@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String 객체 설명</title>
+</head>
+<body>
+    <script>
+        // let str = "hello"는 new로 생성한 객체(Object)는 아니지만 
+        // String(래퍼 object)이기 때문에
+        // String Object가 사용하는 모든 프로퍼티(=메서드)를 사용할 수 있다.
+        // 이유는 자바스크립트가 일반 String을 객체화하여 변형하기 때문이다.
+
+        let str = 'Hello';  // String 타입
+        console.log(`데이터 타입 : ${typeof str}`);
+        console.log(`n번째 글자 : ${str.charAt(0)}`);  //index 번호를 따름!
+        console.log(`n번째 글자 : ${str.charAt(1)}`);  // 공백도 문자열에 포함됨!
+        console.log(`n번째 글자 : ${str.charAt(2)}`);
+        console.log(`n번째 글자 : ${str.charAt(3)}`);
+        console.log(`n번째 글자 : ${str.charAt(4)}`);
+
+        for(let i=0; i<str.length; i++){
+            console.log(str.charAt(i));  //배열이 아니니까 대괄호 안됨!
+        }
+
+        for(let i=0; i<str.length; i++){
+            console.log(str[i]);
+        }
+
+        // new String() 객체를 생성
+        let str02 = new String('Boys and Girls');
+        let str03 = '!';
+
+        // 태그 사용하지 않고 브라우저에 출력하는 명령어
+        document.write('str02 : ' + str02 + '<br/>');
+        document.write('str03 : ' + str03 + '<br/>');
+        document.write(str02.charAt(0) + '<br/>');
+
+        // String 데이터 타입은 공백도 문자인다.
+        // concat() 프로퍼티는 문자 합치기(=한줄로 나열).
+        document.write(str02.concat(str03) + '<br/>');
+
+        // s라는 글자가 몇 번째 위치에 있는지 제일 첫 번째 index 번호를 알려줌
+        document.write(str02.indexOf('s') + '<br/>');
+
+        // slice(start, end) : 문자 자르기 end-1까지 자름
+        document.write(str02.slice(5, 8) + '<br/>');
+
+        // substr(start, length) : 시작부터 길이까지 자르기
+        document.write(str02.substr(5, 8) + '<br/>');
+
+        // replace(찾을 문자, 바꿀문자) : 찾을문자를 바꿀문자로 변경하여 출력
+        document.write(str02.replace('and', 'or') + '<br/>');
+
+        // repeat(반복할 횟수) : 문자를 반복할 횟수만큼 출력
+        document.write(str02.repeat(3) + '<br/>');
+
+        // 왼/오 의 공백을 제거. 단, 가운데 공백은 제거 불가능
+        document.write('  korea  '.trim() + '<br/>');
+
+        // 문자열 "hello javaScript"의 길이를 세어주세요
+        let str04 = 'hello java Script'
+        document.write(str04.length + '<br/>');
+
+        // str04에서 첫번째 문자와 7번째 문자를 추출
+        document.write(str04.charAt(0) + ', ');
+        document.write(str04.charAt(6) + '<br/>');
+
+        // str04에서 javaScript만 추출
+        document.write(str04.slice(6, 17) + '<br/>');
+        document.write(str04.substr(6, 11) + '<br/>');
+
+        // str04에서 java라는 문자가 시작되는 위치를 찾아서 출력
+        // indexOf로 문자의 위치를 호추하려 했으나 -1이 출력될 경우 
+        // 문자가 존재하지 않는다는 뜻. 대/소문자 구분한다.
+        document.write(str04.indexOf('j') + '<br/>');
+
+        
+        // 문자열 "Programming is fun" 안에 "fun"이 포함되어 있는지 확인하세요. (includes())
+        let str05 = 'Programming is fun';
+        document.write(str05.includes('fun') + '<br/>');
+
+        // 문자열 "I like Java"에서 "Java"를 "JavaScript"로 바꿔보세요. (replace())
+        let str06 = 'I like Java';
+        document.write(str06.replace('Java', 'JavaScript') + '<br/>');
+
+        // 문자열 " Hello World "에서 앞뒤의 공백을 제거하고 출력하세요. (trim())
+        let str07 = ' Hello World ';
+        document.write(str07.trim() + '<br/>');
+
+        // 문자열 "apple,banana,grape"를 쉼표(,) 기준으로 잘라 배열로 만드세요. (split())
+        let str08 = 'apple,banana,grape';
+        let sub = str08.split(',');  // 배열 생성
+        for(let i=0; i<sub.length; i++){
+            document.write(sub[i] + '<br/>');
+        }
+
+        // 문자열 "Hello"와 "World"를 합쳐 "Hello World"로 출력하세요. (concat() 또는 + 연산자 사용)
+        let str09 = 'Hello';
+        let str10 = 'World';
+        document.write(str09.concat(' ' + str10));
+    </script>
+</body>
+</html>
