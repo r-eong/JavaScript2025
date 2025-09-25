@@ -1,0 +1,116 @@
+@charset "UTF-8";
+/* 전체 */
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+body{
+    background-color: #ffffff;
+    /* font-weight: normal; */
+    font-style:normal;
+    font-weight:normal;
+    text-decoration:none;
+}
+
+h2{
+    font-size: 17px;
+}
+
+/* wrap */
+.wrap{
+    margin: 30px auto;
+    background-color: #f4f8f8;
+    width: 900px;
+    height: 740px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* 왼쪽 상당 헤더 */
+.order_menu{
+    padding: 30px 30px;
+    /* border: 1px solid #1e7029; */
+    color: #094411;
+    width: 500px;
+}
+/* 음료 선택 문구 */
+#plesae{
+    margin-bottom: 20px;
+}
+/* MENU 글씨 */
+h2#menuH2{
+    background-color: #1e7029;
+    color: #f4f8f8;
+    padding: 7px 22px;
+    font-size: 15px;
+    width: 60px;
+    border-radius: 5px 5px 0 0;
+    text-align: center;
+}
+.menubox{
+    /* margin: 30px 0; */
+    border: 1px solid #1e7029;
+    /* width: 100px;
+    height: 100px; */
+}
+ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    background-color: #f4f8f8;
+    border: 1px solid #1e7029;
+    border-radius: 0 5px 5px 5px;
+    padding: 16px;
+}
+li{
+    background-color: #ffffff;
+    border: 1px solid #b7caba;
+    border-radius: 5px;
+    width: 100px;
+    height: 170px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    cursor: pointer;
+}
+li:hover{
+    background-color: #d8e6da;
+}
+img{
+    width: 60%;
+    padding: 10px;
+}
+img:hover{
+    background-color: #ffffff;
+    border-radius: 50%;
+}
+/* 오른쪽 전체 */
+.left_menu{
+    width: 300px;
+    background-color: #1e7029;
+    color: #f4f8f8;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+button{
+    border: none;
+    background-color: #f4f8f8;
+    color: #094411;
+    padding: 12px 35px;
+    margin: 15px 0 0 0;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 120%;
+    width: 100%;
+}
+button:hover{
+    background-color: #094411;
+    color: #f4f8f8;
+}

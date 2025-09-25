@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object 기초문제</title>
+</head>
+<body>
+    <h3>1. 학생 성적 관리 프로그램</h3>
+    <p id="output"></p>
+    <script>
+        let output = document.getElementById('output');
+        let student = [
+            {id: 1, name: '홍길동', kor: 90, eng: 80, math: 85},
+            {id: 2, name: '성춘향', kor: 95, eng: 88, math: 92},
+            {id: 3, name: '이몽룡', kor: 70, eng: 75, math: 80},
+        ]
+        let avg = 0;
+        let sum = 0;
+        let stu = '';
+        for(let i=0; i<student.length; i++){
+            sum = (student[i].kor + student[i].eng + student[i].math);
+            avg = sum / 3;
+            stu += `${student[i].name}의 평균 점수 : ${avg.toFixed(2)} </br>`;
+        }
+        output.innerHTML = stu;
+    </script>
+</body>
+</html>

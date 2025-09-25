@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object 기초문제</title>
+</head>
+<body>
+    <script>
+        // Object 배열 만들기
+        // id : 1 = 배열 안 가가의 Object를 구별하는 키
+        // DB(dataBase)형식으로 작성
+        // DB란? 데이터 저장소
+        let cart = [
+            // id를 적는 이유 : index에 이름 부여하는거랑 같음! 
+            // index마다 다르다는걸 데이터에 알려주기 위해!
+            {id: 1, name: '노트북', price: 1000, quantity: 1},  // index 0
+            {id: 2, name: '마우스', price: 50, quantity: 2},  // index 1
+        ]
+        // for문 이용하여 total값 구하기
+        let total = 0;
+        for(let i=0; i<cart.length; i++){
+            total += cart[i].price * cart[i].quantity;
+        }
+        console.log(total);
+    </script>
+</body>
+</html>
