@@ -22,17 +22,21 @@ h2{
     margin: 30px auto;
     background-color: #f4f8f8;
     width: 900px;
-    height: 740px;
+    /* height: 750px; */
     display: flex;
+    /* padding: 30px; */
     justify-content: space-between;
 }
 
 /* 왼쪽 상당 헤더 */
-.order_menu{
-    padding: 30px 30px;
-    /* border: 1px solid #1e7029; */
-    color: #094411;
+.section1{
     width: 500px;
+}
+.order_menu{
+    padding: 30px;
+    /* border: 1px solid #1e7029; */
+    color: #1b4d22;
+    /* width: 500px; */
 }
 /* 음료 선택 문구 */
 #plesae{
@@ -40,7 +44,7 @@ h2{
 }
 /* MENU 글씨 */
 h2#menuH2{
-    background-color: #1e7029;
+    background-color: #1b4d22;
     color: #f4f8f8;
     padding: 7px 22px;
     font-size: 15px;
@@ -50,21 +54,21 @@ h2#menuH2{
 }
 .menubox{
     /* margin: 30px 0; */
-    border: 1px solid #1e7029;
+    border: 1px solid #1b4d22;
     /* width: 100px;
     height: 100px; */
 }
-ul{
+#coffeeUi{
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
     gap: 15px;
     background-color: #f4f8f8;
-    border: 1px solid #1e7029;
+    border: 1px solid #1b4d22;
     border-radius: 0 5px 5px 5px;
-    padding: 16px;
-}
-li{
+    padding: 20px;
+    align-content: space-between;
+}.coffeeLi{
     background-color: #ffffff;
     border: 1px solid #b7caba;
     border-radius: 5px;
@@ -77,32 +81,73 @@ li{
     font-size: 13px;
     cursor: pointer;
 }
-li:hover{
+.coffeeLi:hover{
     background-color: #d8e6da;
 }
 img{
-    width: 60%;
+    width: 50%;
     padding: 10px;
-}
-img:hover{
     background-color: #ffffff;
     border-radius: 50%;
+}
+img:hover{
+    border-radius: 50%;
+    background-color: #ffffff;
 }
 /* 오른쪽 전체 */
 .left_menu{
     width: 300px;
-    background-color: #1e7029;
+    background-color: #1b4d22;
     color: #f4f8f8;
     padding: 30px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    border-radius: 10px 0 0 10px;
 }
 
-button{
+/* 주문내역 */
+.plus,
+.minus,
+.remove{
+    border: none;
+    background-color: transparent;
+    color: #f4f8f8;
+    font-size: 120%;
+    cursor: pointer;
+}
+.cartLi{
+    position: relative;
+    margin: 18px 0;
+    padding: 10px 15px;
+    /* width: 100%; */
+    border: 1px solid #f4f8f8;
+    border-radius: 5px;
+}
+.cartDiv{
+    display: flex;
+}
+.remove{
+    position: absolute;
+    right: 16px;
+    top: 10px;
+}
+.Btndiv{
+    margin: 7px 0;
+}
+.plus:hover,
+.minus:hover,
+.remove:hover{
+    color: #021b06;
+}
+.plus{
+    margin-right: 10px;
+}
+/* 결제버튼 */
+.btn{
     border: none;
     background-color: #f4f8f8;
-    color: #094411;
+    color: #1b4d22;
     padding: 12px 35px;
     margin: 15px 0 0 0;
     border-radius: 5px;
@@ -110,7 +155,32 @@ button{
     font-size: 120%;
     width: 100%;
 }
-button:hover{
-    background-color: #094411;
+.btn:hover{
+    background-color: #06310c;
     color: #f4f8f8;
+}
+
+/* 주문 상품을 너무 많이 담았을 때 스크롤바 생성 css */
+.orderbox {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  /* 스크롤 관련 속성 */
+  max-height: 750px; /* 원하는 높이 제한 */
+  /* overflow-y: auto; */
+  /* 세로 스크롤 자동 생성 */
+  padding-right: 5px; /* 스크롤 때문에 글자 잘리지 않도록 여백 */
+  overflow-y: auto; /* 세로 스크롤 허용 */
+  overflow-x: hidden; /* 가로 스크롤 차단 */
+  padding-right: 8px; /* 스크롤과 텍스트 겹치지 않도록 여백 */
+  box-sizing: border-box;
+}
+/* 스크롤바 스타일 (선택) */
+.orderbox::-webkit-scrollbar {
+  width: 6px;
+}
+.orderbox::-webkit-scrollbar-thumb {
+  background: #152b17;
+  border-radius: 3px;
 }

@@ -28,7 +28,7 @@
           </div>
         </div>
         <div class="order_result01">
-          <h2>총 주문금액 : <span id="pay">0원</span></h2>
+          <h2>총 주문금액 : <span id="pay"></span></h2>
           <!-- <span class="line">&boxv;</span> -->
           <button class="btn">결 제</button>
         </div>
@@ -56,61 +56,125 @@
       // menubox에 출력할거임
       let menubox = document.getElementById('menubox');
       let liImg = document.getElementById('liImg');
-      let result01 = '';
+      let pay = document.getElementById('pay');
+      let orderbox = document.getElementById('orderbox');
+      let cartarr = [];  //1차원 빈배열 생성
+      
+      // 메뉴 선택시 주문내역에 나오게
+      // 1차원 배열이름 = []; //빈 1차원 배열 생성하는 방식
+      // let cart4 = [1,2,3] //1차원에 값이 입력된 배열
+      // let cart2 = new Array(); //1차원 빈배열
+      
+      // javaSCript 버전 6이상 읽어 들이는 브라우저에서 사용 가능
+      // let cart3 = Array.from(Array(2), () => new Array(3)); //2x3 2차원 빈배열 생성
+      // let cart6 = Array.from(Array(2), () => new Array(3).fill(1)); //2x3 2차원 1채원진 배열 생성
+      
       function renderMenu(){
+        let result01 = '';
         // 항목 나열을 위한 ul / li
-        result01 += `<ul>`;
+        result01 += `<ul id="coffeeUi">`;
           // 이미지 출력 ICE/HOT에 대한 if
           for(let i=0; i<menus.length; i++){
-            if(menus[i].type === 'HOT'){
-              result01 += `
-              <li onclick="menuClick()" id="liImg">
-                <span>${menus[i].type}</span>
-                <img src= "img/hot.png" alt="${menus[i].name}">
-                <em>${menus[i].name}</em>
-                <p>${(menus[i].price).toLocaleString('ko-kr')}</p>
-              </li>`;
-
-            }else{
-              result01 += `
-              <li onclick="menuClick()" id="liImg">
-                <span>${menus[i].type}</span>
-                <img src= "img/ice.png" alt="${menus[i].name}">
-                <em>${menus[i].name}</em>
-                <p>${(menus[i].price).toLocaleString('ko-kr')}</p>
-              </li>`;
-            }
+              if(menus[i].type === 'HOT'){
+                result01 += `
+                <li onclick="menuClick(${i})" class="coffeeLi">
+                  <span>${menus[i].type}</span>
+                  <img src= "img/hot.png" alt="${menus[i].name}"/>
+                  <p>${menus[i].name}</p>
+                  <p>${(menus[i].price).toLocaleString('ko-kr')}원</p>
+                </li>`;
+              }else{
+                result01 += `
+                <li onclick="menuClick(${i})" class="coffeeLi">
+                  <span>${menus[i].type}</span>
+                  <img src= "img/ice.png" alt="${menus[i].name}"/>
+                  <p>${menus[i].name}</p>
+                  <p>${(menus[i].price).toLocaleString('ko-kr')}원</p>
+                </li>`;
+              }
           }
           result01 += `</ul>`;
           // 출력
           menubox.innerHTML = result01;
+          // console.log(result01);
         }
         // 호출
         renderMenu();
-
+        
         // 주문내역
-        function renderCart(){
-          // 선택한 메뉴 출력 위치
-          let orderbox = document.getElementById('orderbox');
+        let index = 0; //초기화
+        function menuClick(orderNo){
           let result02 = '';
+          result02 +=`<ul class="cartUi">`;
+          // 선택한 메뉴 출력 위치
           // 총 금액 출력 위치
           let pay = document.getElementById('pay');
-          let payTotal = '';
-
-          result02 +=`<ul>`;
+          // 주문내역에 담기
           for(let i=0; i<menus.length; i++){
-            let sum = menus[i].quantity;  // 수량
-            let total = (menus[i].price * menus[i].quantity).toLocaleString('ko-kr');
+            if(i===orderNo){
+              cartarr[index] = {
+                  id:menus[i].id,
+                  name:menus[i].name,
+                  type:menus[i].type,
+                  price:menus[i].price,
+                  quantity:menus[i].quantity
+              }
+
+              orderbox.innerHTML +=`
+              <li class="cartLi">
+                <div class = "cartDiv">
+                  <p>${cartarr[index].name}</p> <span>&nbsp;(${cartarr[index].type}) </span><p>&nbsp;-&nbsp;${cartarr[index].quantity}개</p>
+                  </div>
+                  <p>${(cartarr[index].price * cartarr[index].quantity).toLocaleString('ko-kr')}원</p>
+                <button class="remove" onclick="removeBtn(${index})">x</button>
+                <div class="Btndiv">
+                  <button class="plus" onclick="plusBtn(${index})">▲</button>
+                  <button class="minus" onclick="minusBtn(${index})">▼</button>
+                </div>
+              </li>`;
+              index++;
+            }
             
-            result02 +=`
-            <li>${menus[i].name}
-              (${menus[i].type})
-              ${menus[i].quantity}개 / 
-              ${menus[i].price}
-              <button>
-            </li>
-            `;
+            result02 +=`</ul>`;
           }
+          allTotal();
+        }
+
+        // 총 주문 금액
+        function allTotal(index){
+          let total = 0;
+          for(let i=0; i<cartarr.length;i++){
+            total += cartarr[i].price * cartarr[i].quantity;
+          }
+          pay.innerHTML = `${total.toLocaleString('ko-kr')}원`;
+          menuClick();
+        }
+      
+        // 수량 up 버튼
+        function plusBtn(index){
+          if(cartarr[index].quantity < 10){
+            cartarr[index].quantity++;
+          }else{
+            alert('수량은 10개까지만 가능합니다. 대량 주문은 카운터로 문의 바랍니다.');
+          }
+          allTotal();
+        }
+        // 수량 down 버튼
+        function minusBtn(index){
+          if(cartarr[index].quantity > 1){
+            cartarr[index].quantity--;
+          }else{
+            alert('최소 수량은 1개 입니다.');
+          }
+          allTotal();
+        }
+
+        // 삭제 버튼
+        function removeBtn(index){
+            cartarr.splice(index, 1);
+            // cartarr.remove();
+            orderbox.innerHTML = '';
+            allTotal();
         }
     </script>
 </body>
