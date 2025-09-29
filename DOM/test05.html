@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClassList toggle</title>
+    <style>
+        .high{
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <p id="text">클릭하면 강조</p>
+    <script>
+        // toggle은 하나의 태그가 두가지 역할을 함
+        // 클릭-> 보임 -> 재클릭 -> 사라짐
+        let text = document.getElementById('text');
+        text.onclick = function(){
+            this.classList.toggle('high')  // high <= 클래스 이름
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM 기초문제</title>
+</head>
+<body>
+    <!-- 태그작성 5~8번 문제 -->
+    <ul class="ul05">
+        <li>사과</li>
+        <li>바나나</li>
+        <li>체리</li>
+    </ul>
+
+    <ul id="list"></ul>
+
+    <ul class="ul07">
+        <li>삭제될 항목</li>
+        <li>남길 항목</li>
+    </ul>
+
+    <div id="content"></div>
+
+    <script>
+        // 문제 5 : querySelectorAll을 사용해 모든 <li> 글자를 "과일"로 바꾸세요.
+        let li05 = document.querySelectorAll('ul05 li');
+        for(let i=0; i<li05.length; i++){
+            li05[i].textContent = '과일';
+        }
+
+        // 문제 6 : 새 <li> 요소를 생성하고 "새 항목" 텍스트를 넣어 <ul>에 추가하세요.
+        let li06 = document.createElement('li');
+        li06.textContent = '새 항목'; //텍스트 노드에 접근해서 새 항목과 값만 입력
+        document.getElementById('list').appendChild(li06);
+        // console.log(li06);
+
+        // 문제 7 : 첫 번째 <li> 요소를 삭제하세요.
+        document.querySelector('.ul07 li').remove();
+
+        // 문제 8 : innerHTML을 사용해 <p>DOM 연습</p>을 추가하세요.
+        let content = document.getElementById('content');
+        content.innerHTML = `<p>DOM 연습</p>`;
+    </script>
+</body>
+</html>

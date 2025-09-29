@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>할 일 목록</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+        .todo-container{
+            width: 350px;
+            margin: 30px auto;
+            background-color: #f5f6f8;
+            border-radius: 20px;
+            border: 3px solid #bfc2ca;
+            padding: 10px 30px;
+            color: #333;
+        }
+        .todo-container h2{
+            margin: 10px 0;
+        }
+        .todo-container .input-area{
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .todo-container .input-area input{
+            border: none;
+            border-bottom: 1px solid #3a435c;
+            padding: 0 10px;
+            background-color: transparent;
+            font-size: 14px;
+            outline: none;
+            width: 200px;
+        }
+        .todo-container .input-area input::placeholder{
+            color: #bfc2ca;
+        }
+        .todo-container .input-area button{
+            padding: 5px 16px;
+            border: none;
+            background-color: #3a435c;
+            color: #ffffff;
+            border-radius: 100px;
+            font-size: 14px;
+        }
+        ul{
+            list-style: none;
+            margin: 0;
+            font-size: 14px;
+            padding: 0;
+        }
+        li{
+            position: relative;
+            margin: 10px 0;
+            padding: 0 10px;
+        }
+        li button{
+            position: absolute;
+            right: 0;
+            background-color: transparent;
+            border: none;
+            font-size: 18px;
+            color: #3a435c;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="todo-container">
+        <h2>#Todo_List</h2>
+        <div class="input-area">
+            <input id="task" type="text" placeholder="할 일 입력"/>
+            <button onclick="addTask()">추가</button>
+        </div>
+        <ul id="tasks"></ul>
+    </div>
+    <script>
+        // input에 입력하고 button을 누르면 ul에 추가
+        // 추가된 할 일이 순서대로 들어감
+        // 끝낸 할일을 x하면 사라짐
+        // li, x버튼 추가 해야됨!
+
+        function addTask(){
+            // input
+            let task = document.getElementById('task').value;
+            // 부모 tasks에 자식 li 추가
+            let tasks = document.getElementById('tasks');
+            // li 생성
+            let liadd = document.createElement('li');
+
+            // input에서 입력받은 값을 생성한 li의 텍스트 노드안에 입력
+            liadd.textContent = task;
+
+            // 삭제 버튼
+            // 삭제 버튼 생성
+            let delBtn = document.createElement('button');
+            // 부모 연결
+            liadd.appendChild(delBtn);
+            // 삭제 버튼 추가
+            delBtn.textContent = 'x';
+            // 또 다른 함수 생성 방법 1
+            // 변수이름.OnClick = Function(){}(값)
+            delBtn.onclick = function(){
+                liadd.remove();
+            }
+            // 함수 생성 방법 2
+            // delBtn.addEventListener('click',() => {
+            //     liadd.remove();
+            // })
+            liadd.appendChild(delBtn);
+            document.getElementById('tasks').appendChild(liadd);
+            task.setFocus()  //input의 커서위치
+            task.value = '';
+        }
+    </script>
+</body>
+</html>

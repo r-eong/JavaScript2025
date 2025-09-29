@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClassName class 이름 추가/수정</title>
+    <style>
+        .blue{
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <h1>
+        <span>난 span 태그</span>
+    </h1>
+    <script>
+        // document.getElementsByTagName('h1')[0]
+        // ┖> 첫 번째 h1태그에 p태그를 추가하겠다는 뜻
+        let titleChang = document.getElementsByTagName('h1')[0];
+        let p01 = document.createElement('p');
+
+        p01.className = 'blue';  // class 이름 지정 <p class="blue">
+        p01.classList.add('active');  // class 지정한 이름 추가 <p class="blue active">
+        p01.classList.remove('active');  // class 지정한 이름 삭제 <p class="blue">
+        p01.innerHTML = '난 js로 추가된 p태그야';
+        titleChang.appendChild(p01);
+    </script>
+</body>
+</html>

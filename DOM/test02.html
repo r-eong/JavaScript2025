@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM 기초문제</title>
+</head>
+<body>
+    <!-- 태그작성 : 1~4번 문제 -->
+    <!-- 문제1 -->
+    <p id="text">안녕하세요</p>
+
+    <!-- 문제2 -->
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+
+    <!-- 문제3 -->
+    <p>첫 번째 문장</p>
+    <p>두 번째 문장</p>
+
+    <!-- 문제4 -->
+    <ul>
+        <li>사과</li>
+        <li>바나나</li>
+        <li>체리</li>
+    </ul>
+
+    <!-- <p class="p2">one</p>
+    <p class="p2">two</p> -->
+    <script>
+        // 문제1 : id 선택자를 사용해 텍스트를 "DOM 실습 중급"으로 바꾸고, 콘솔에도 출력
+        let text = document.getElementById('text');
+        text.textContent = 'DOM 실급 중급';
+
+        // 문제2 : 클래스 선택자로 모든 div의 배경색을 "yellow"로 변경하세요.
+        // 배열처럼 보이지만 [] <-이런 구성이 아니라서 배열이 아님
+        let box = document.getElementsByClassName('box');
+        // for (let i=0; i<=box.length; i++){
+        //     box[i].style.backgroundColor = 'yellow';
+        //     box[i].style.color = 'red';
+        //     box[i].style.width = '50px';
+        // }
+        // 배열 생성하는 방법 : Array.from()
+        // box를 배열로 생성
+        // for문 보다 forEach가 더 빠르고 간편함!
+        //                 forEach((box, index)에서의 box는 변수 이름을 적은게 아니라
+        //                                     3개의 box의 이름을 box로 지정한것임!
+        Array.from(box).forEach((box, index)=>{
+            box.style.backgroundColor = 'yellow';
+        })
+
+        // 문제3 : getElementsByTagName을 사용해 모든 <p> 글자색을 "blue"로 변경하세요.
+        let p1 = document.getElementsByTagName('p');
+        for(i=0; i<p1.length; i++){
+            p1[i].style.color = 'blue';
+        }
+
+        // 문제4 : querySelector를 사용해 첫 번째 <li> 글자를 "포도"로 바꾸세요.
+        // 선텍자 이름(id, class)이 존재하지 않을 경우 부모자식의 태그명을 정확하게 입력한다.
+        let li01 = document.querySelector('ul li');
+        li01.textContent = '포도';
+
+        // // <정리>
+        // // getElementsByTagName -> 배열과 유사
+        // // forEach()문은 HTMLCollenction을 가지고 있지 않음
+        // // Array.from()이용하여 생성 가능
+        // let p10 = document.getElementsByTagName('p');
+        // console.log(`p10 ${p10}`);
+        // // let arr10 = Array.from(p10);
+        // // arr10.forEach(item => {
+        // //     item.style.color='red';
+        // // });
+        // for(let i=0; i<p10.length; i++){
+        //     p10[i].style.color = 'blue';
+        // }
+
+        // // getElementsByClassName
+        // // forEach() 적용 안됨
+        // let p11 = document.getElementsByClassName('p2');
+        // console.log(`p11 ${p11}`);
+        // // for문 인덱스로 접근하고, length 속성을 가지기 때문에 접근 가능
+        // for(let i=0; i<p11.length; i++){
+        //     p11[i].style.fontSize = '30px';
+        //     p11[i].style.color = 'green';
+        // }
+
+        // // querySelectorAll
+        // // javaScript ES6 버전 이후부터 forEach() 허용
+        // let p12 = document.querySelectorAll('.p2');
+        // console.log(`p12 ${p12}`);
+        // // p12.forEach((item, i) =>{
+        // //     item.style.color = 'red';
+        // // })
+        // for(let i=0; i<p12.length; i++){
+        //     p12[i].style.color = 'blue';
+        // }
+    </script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM 연습</title>
+</head>
+<body>
+    <!-- DOM 연습 -->
+    <!-- h1 : 요소노드. id = 'title' : 속성노드-->
+    <h1 id="title">안녕하세요</h1>
+    <img id="photo" src="img/ice.png" width="100">
+    <p id="msg">이 글자는 파란색으로 변경됩니다.</p>
+    <ul id="list">
+        <li id="item">기존 항목</li>
+    </ul>
+    <button id="btn">눌러보세요</button>
+    <p id="p1">This is a paragraph</p>
+    <input type="button" onclick="changeStyle()" value="클릭">
+    <!-- href='url' => 자바스크립트 함수로 연결 -->
+    <a href="javascript:add()">보여주기</a>
+    <a href="javascript:remove()">감추기</a>
+
+    <script>
+        // DOM은 html 문서에 접근하는 인터페이스이다.
+        let title02 = document.getElementById('title');
+        // title02 = 'DOM 조작 성공';
+        // 변수에 값을 지정하고 텍스트 노드에 접근하지 않았기 떄문에 
+        // h1 태그의 텍스트 내용이 변경되지 않았다.
+        title02.textContent = 'DOM 조작 성공';
+        console.log(title02);
+
+        // 이미지를  ice에서 hot으로 변경
+        // img태그의 src 속성으로접근해서 수정 요망
+        // setAttridute();
+        let img01 = document.getElementById('photo');
+        img01.setAttribute('src','img/hot.png');
+
+        // 스타일 변경
+        let pcolor = document.getElementById('msg');
+        pcolor.style.color = 'blue';
+        pcolor.style.fontSize = '20px';
+
+        // 요소 -> 태그 추가 -> 생성 : createElement('추가요소')
+        // 요소 추가 순서
+        // 1. createElement('요소이름')
+        // 2. 텍스트 노드접근 = '새로운 값'
+        // 3. 부모요소의 DOM에 접근
+        // 4. appendChild(1번의 변수이름)
+        let li = document.createElement('li');
+        // 텍스트 노드에 접근해서 텍스트를 수정
+        li.textContent = '새 항목';
+        // li.textContent = '두번째 항목';  // 이러면 안됨. for사용해야함!
+        // li요소를 추가 = appendChild(요소이름);
+        // 추가할 부모 요소 태그를 DOM으로 접근한다.
+        document.getElementById('list').appendChild(li);
+
+        // 요소 삭제 : remove() -> 접근한 DOM요소만 삭제할 수 있다.
+        document.querySelector('#item').remove();
+
+        // addEventListener('click',()=>{})로 함수 만들기
+        // 장점 : 태그에 직접 onClick='함수이름()' 정의하지 않아도 됨
+        let btn = document.getElementById('btn');
+        btn.addEventListener('mouseover',()=>{
+            alert('연습');
+        });
+
+        // 기존의 함수 입력 방식 태그자체 onClick='함수이름'
+        function changeStyle(){
+            document.querySelector('#p1').style.color='red';
+        }
+
+        // <a href='javascript:add()'>보기</a>
+        // href속성을 통해 직접 자바스크립트로 연동
+        function add(){
+            // 테이블 생성
+            let tables = document.createElement('table');
+            // 생성한 테이블의 id이름을 target으로 지정
+            tables.setAttribute('id','target');
+            // tr 생성
+            let trs = document.createElement('tr');
+            // td 생성
+            let tds = document.createElement('td');
+            // textnode 텍스트 노드 생성
+            let textnodes = document.createTextNode('나는 수업중');
+            // table의 요소 노드로 전부 연결
+            // table의 요소 노드에 생성한 자식노드를 추가하기
+            tables.appendChild(trs).appendChild(tds).appendChild(textnodes);
+
+            // 기존의 html문서안에서 body요소 노드로 tables를 연결
+            document.body.appendChild(tables);
+        }
+
+        function remove(){
+            // 위 add함수에서 생성한 테이블을 삭제하기위해
+            // id='target 수정
+            let target = document.querySelector('#target');
+
+            // 삭제
+            target.remove();
+            // 부모요소에 접근하여 자식 노드를 삭제
+            target.parentNode.removeChild(target);
+        }
+    </script>
+</body>
+</html>
