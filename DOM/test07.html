@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연습문제</title>
+</head>
+<body>
+    <!-- 문제 13~16번 -->
+    <button id="btn">13번</button>
+    <div id="box13" class="active"></div>
+
+    <div id="box14" style="width: 100px; height: 100px;"></div>
+
+    <!-- a태그 = 요소노드 / id, href = 속성 노드 / 네이버 = 텍스트 노드 -->
+    <a id="link" href="https://naver.com">네이버</a>
+
+    <img id="logo" src="img/logo.png">
+
+    <script>
+        // 문제 13 : 버튼 클릭 시 classList.toggle("active") 기능 구현하세요.
+        let btn = document.getElementById('btn');
+        btn.addEventListener('click',()=>{
+            let box13 = document.getElementById('box13');
+            box13.classList.toggle('active');
+        })
+
+        // 문제 14 : JS에서 배경색을 "red"로 변경하세요.
+        let box14 = document.getElementById('box14');
+        box14.style.backgroundColor = 'red';
+        
+        // 문제 15 : JS로 링크 주소를 "https://google.com"으로 변경하세요.
+        let link = document.getElementById('link');
+        link.setAttribute('href','https://google.com');
+        // link.href = 'https://google.com';  // 위랑 같은거임!
+
+        // 문제 16 : JS로 src 속성 값을 콘솔에 출력하세요.
+        let logo = document.getElementById('logo');
+        console.log(logo.src);
+    </script>
+</body>
+</html>

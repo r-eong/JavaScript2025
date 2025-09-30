@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수</title>
+</head>
+<body>
+    <script>
+        // 화살표 함수
+        // 생성 방법 (매개변수x) - let 변수(함수이름) = () => {실행문}
+        // 생성 방법 (매개변수o) - let 변수(함수이름) = (a,b) => {실행문}
+        let sum = (a,b) => {
+            let result = a + b;
+            return result;  // return은 ressult를 가지고 탈출
+            // return은 값을 반환한다
+            // 반환하다 = 함수가 실행을 마친 뒤
+            // 계산된 결과값을 호출한 곳으로 되돌려준다.
+            // return을 만나면 반환하고 종료됨
+        }
+        
+        console.log('합계 : ' + sum(10,20));
+        
+        // 자바스크립트에서 명시적 함수로 작성할시 호이스팅 이슈가 생긴다.
+        // 호이스팅이란? 전역변수로 지정한 변수의 위치보다 
+        // 아래에 함수가 생성되어있음에도 전역변수 위로 위치가 이동되어
+        // 연산하려는 결함이 존재
+        // 그래서 명시적 함수로 생성할 떄는 변수를 함수안에 작성해야 로직이 잘 돌아감.
+        // 이런 이유로 명시적 함수는 사용을 지양한다.
+        // 요즘은 화살표 함수로 모든 함수를 생성하느 추세이다.
+        // function sum(a,b){
+
+        // }
+
+        let avg = (a,b) => {
+            let result02 = (a+b)/2
+            return result02;
+        }
+        console.log('평균 : ' + avg(10,20));
+    </script>
+</body>
+</html>
