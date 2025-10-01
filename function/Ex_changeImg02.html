@@ -141,30 +141,51 @@
     <script>
         // 사진 슬라이드
         let bigimg = document.getElementById('bigimg');
-        let small1 = document.querySelectorAll('.small')[0];
-        small1.addEventListener('mouseover',() => {
-            bigimg.src = 'img/coffee-pink.jpg';
+        // let small1 = document.querySelectorAll('.small')[0];
+        // small1.addEventListener('mouseover',() => {
+        //     bigimg.src = 'img/coffee-pink.jpg';
+        // })
+        // let small2 = document.querySelectorAll('.small')[1];
+        // small2.addEventListener('mouseover',() => {
+        //     bigimg.src = 'img/coffee-blue.jpg';
+        // })
+        // let small3 = document.querySelectorAll('.small')[2];
+        // small3.addEventListener('mouseover',() => {
+        //     bigimg.src = 'img/coffee-gray.jpg';
+        // })
+        
+        // 같은 내용임!
+        let small = document.querySelectorAll('.small');
+        for(i=0; i<small.length; i++){
+            // for문 안에서 addEventListener()를 이용할 땐 () => 대신 function으로
+            small[i].addEventListener('mouseover', function(){
+                // this는 이벤트가 발생한 대상 요소를 가리킴
+                // 여기는 small(img)의 "img/coffee-pink.jpg" 를 의미
+                // this는 지금 이벤트가 일어난 그 요소. 자기 자신을 가리킴
+                // this.src는 그 이미지 태그가 가지고 있는 이미지 주고는 꺼내는 것
+                let newImg = this.src;
+                // console.log(this.src)
+                bigimg.setAttribute('src',newImg);
         })
-        let small2 = document.querySelectorAll('.small')[1];
-        small2.addEventListener('mouseover',() => {
-            bigimg.src = 'img/coffee-blue.jpg';
-        })
-        let small3 = document.querySelectorAll('.small')[2];
-        small3.addEventListener('mouseover',() => {
-            bigimg.src = 'img/coffee-gray.jpg';
-        })
+        }
         
         // 상세 설명 보기
         let view = document.getElementById('view');
         let detail = document.getElementById('detail');
 
         view.addEventListener('click',() => {
-            if(detail.style.display === 'inherit'){
+            if(detail.style.visibility === 'inherit'){
                 detail.style.visibility = 'hidden';
             }else{
-                detail.style.display = 'inherit';
+                detail.style.visibility = 'inherit';
             }
         })
+
+        // toggle
+        // view.addEventListener('click', () =>{
+        //     detail.classList.toggle('active');
+        // })
+        // css에서 #detail{display:none;} / #detail.active{display:block;} 해야됨
     </script>
 </body>
 </html>
