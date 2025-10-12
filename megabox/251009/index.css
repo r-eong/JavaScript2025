@@ -8,7 +8,6 @@
     list-style: none;
 }
 /* container 전체 */
-button{cursor: pointer;}
 .container{
     color: #222222;
     position: absolute;
@@ -769,11 +768,10 @@ border-radius: 0 0 0 10px;
     background-color: #e5b200;
 }
 /* 좌석표 마우스오버/선택한좌석 */
-/* 2025 - 10 - 11 hover 이벤트는 selected class를 통해서 배경색 변경  */
-/* .main_seat .seat_table tbody tr td.seat_class:hover {
+.main_seat .seat_table tbody tr td.seat_class:hover {
     background-color: #503396;
     color: #fff;
-} */
+}
 .selected,
 .clicked {
     /* !important = 우선순위라는뜻 */

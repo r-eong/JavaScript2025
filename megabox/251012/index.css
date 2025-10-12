@@ -10,10 +10,13 @@
 /* container 전체 */
 .container{
     color: #222222;
-    position: absolute;
+    position: relative;
     width: 100%;
     text-decoration: none;
     font-weight: normal;
+}
+body{
+    overflow-x: hidden;
 }
 /* ---------------------------------------- */
 /* 헤더 전체 */
@@ -54,6 +57,8 @@
     margin: 0 auto;
     width: 1100px;
     font-size: 19px;
+    position: relative;
+    z-index: 50;
 }
 .head .nav > ul{
     display: flex;
@@ -62,17 +67,286 @@
     /* margin-bottom: 10px; */
 }
 /* 헤더 하단 아이콘 전체 */
-.head .nav button{
+.head .nav ul li > button{
     width: 30px;
     height: 30px;
     border: none;
     background-color: transparent;
     cursor: pointer;
+    /* background-size: cover; */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
-/* 나비 메인로고 */
+
+.nav ul li.on:hover::before{
+    content: '';
+    width: 100%;
+    height: 5px;
+    background-color: #3d9dbb;
+    display: inline-block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+
+/* 나비 */
+/* 메인 메뉴 전체 */
+.nav ul{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 35px;
+  position: relative;
+}
+
 .nav ul li{
+    position: relative;
+    cursor: pointer;
+    padding-bottom: 15px;
+}
+
+/* 서브 메뉴(navSUB) 숨김 기본 상태 */
+.nav ul li .navSUB{
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200vw;
+  background-color: #3d9dbb;
+  text-align: center;
+  padding: 10px 0;
+  z-index: 99;
+}
+
+/* li(id=on)에 마우스 올렸을 때 서브메뉴 표시 */
+.nav ul li.on:hover .navSUB{
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+/* 서브 메뉴 안의 링크 */
+.nav ul li.on .navSUB a{
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+  transition: all 0.2s;
+}
+
+/* 서브 메뉴 hover 시 밑줄 */
+.nav ul li.on .navSUB a:hover{
+  text-decoration: underline;
+}
+
+/* nav 좌측 3줄메뉴 버튼 */
+/* 버튼 이미지 전환 */
+.sitemapBtn img{
+    width: 24px;
+    content: url('img/ico-sitemap.png');
+}
+.sitemapBtn.active img{
+    content: url('img/btn-header-layer-close.png');
+}
+
+.searchBtn img{
+    width: 20px;
+    content: url('img/ico-search.png');
+}
+.searchBtn.active img{
+    content: url('img/btn-header-layer-close.png');
+}
+
+/* SITEMAP, 검색 공용css */
+.modal,
+.search_modal{
+    display: none;
+    position: absolute;
+    top: 98px;
+    left: 50%;
+    /* right: 0; */
+    width: 100vw;  /* 화면 전체 사이즈 */
+    transform: translateX(-50%);
+    justify-content: center;
+    align-items: flex-start;
+    z-index: 100;
+}
+
+/* SITEMAP 모달 */
+.modal.active{
+    display: flex;
+}
+
+.modal_content{
+    background: #333;
+    color: #fff;
+    width: 100%;
+    padding: 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.modal_content h2{
+    font-size: 23px;
+    margin: 0;
+    margin-bottom: 30px;
+}
+
+/* SITEMAP 내부 grid */
+.sitemap_grid{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 1100px;
+    text-align: center;
+}
+
+.sitemap_top,
+.sitemap_bottom{
+    display: flex;
+    /* justify-content: space-between; */
+    gap: 28px;
+}
+
+/* .sitemap_top > div{
+    flex: 1 1 calc(100% / 6);
+}
+.sitemap_bottom > div{
+    flex: 1 1 calc(100% / 4);
+} */
+
+.sitemap_grid h3{
+    color: #dbdbdb;
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 8px;
+    border-top: 0.5px solid #424242;
+    border-bottom: 0.5px solid #424242;
+    padding: 10px 0;
+    width: 160px;
+}
+.sitemap_grid a{
+    color: #ccc;
+    text-decoration: none;
+    font-size: 15px;
+}
+.sitemap_grid a:hover{
+    color: #3d9dbb;
+}
+
+/* 검색 모달 */
+
+.search_modal.active{
+    display: block;
+    background-color: #351f67;
+    /* width: 100%; */
+    padding: 35px;
+}
+.search_modal > div{
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1100px;
+}
+.search_all{
+    width: 1100px;
+}
+.search_modal .search_content{
+    width: 100%;
+}
+.search_content em{
+    font-size: 25px;
+    margin-right: 15px;
+}
+/* 검색전체 */
+.searchBox{
+    display: flex;
+    border-bottom: 1px solid #dbdbdb;
+}
+.search_modal input{
+    width: 360px;
+    height: 50px;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: #dbdbdb;
+    background-color: transparent;
+    font-size: 17px;
+}
+.search_modal input::placeholder{
+    color: #dbdbdb;
+    font-size: 17px;
+}
+.searchBox button{
+    width: 60px;
+    padding: 10px;
+    border: none;
+    background-color: transparent;
     cursor: pointer;
 }
+.searchBox img{
+    filter: invert(97%) sepia(2%) saturate(55%) hue-rotate(324deg) brightness(107%) contrast(72%);
+}
+/* 탭 메뉴 */
+.rank_tabs{
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.rank_tab{
+    background: none;
+    border: none;
+    color: #cccccc;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 5px 0;
+    border-bottom: 2px solid transparent;
+}
+
+.rank_tab.active{
+    color: #dbdbdb;
+    border-bottom: 2px solid #dbdbdb;
+}
+
+/* 탭 내용 */
+.rank_panel{
+    display: none;
+}
+.rank_panel.active{
+    display: block;
+}
+.rank_item{
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+.rank_item img{
+    width: 150px;
+    height: auto;
+}
+.rank_item ul{
+    list-style: none;
+    color: #ffffff;
+    padding-left: 20px;
+    /* display: flex; */
+}
+.rank_item ul li{
+    margin-bottom: 8px;
+    font-size: 17px;
+}
+.rank_panel ul li a{
+    cursor: pointer;
+    font-size: 15px;
+}
+.rank_panel ul li a:hover{
+    border-bottom: 1px solid #dbdbdb;
+}
+
 
 /* ---------------------------------------- */
 
@@ -82,10 +356,15 @@
     height: 42px;
     padding: 0 122.500px;
     border-top: 1px solid #222222;
+    margin-top: 7px;
+    display: flex;
+    justify-content: center;
+}
+.quickBtn .quickText{
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-top: 7px;
+    width: 1100px;
 }
 .quickBtn a{
     text-decoration: none;
@@ -93,6 +372,9 @@
     font-size: 14px;
     display: flex;
 }
+/* .quickBtn a:hover{
+    border-bottom: 1px solid #646464;
+} */
 
 /* ---------------------------------------- */
 
@@ -110,7 +392,7 @@ h2{
 .sec{
     margin: 0 auto;
     width: 1100px;
-    height: 750px;
+    min-height: 845px;
     display: flex;
     justify-content: space-between;
 }
@@ -310,7 +592,9 @@ h2{
     margin-right: 20px;
 }
 /* ---------------------------------------- */
-
+table{
+    border-collapse: separate;
+}
 /* 선택좌석 table */
 .seat-selection{
     display: flex;
@@ -365,21 +649,26 @@ h2{
 .selected_table{
     width: 135px;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    /* gap: 5px; */
     /* margin: 15px 15px 0 15px; */
     padding: 15px;
     border: 0.5px solid #646464;
     border-radius: 0 5px 5px 0;
-
+    border-spacing: 5px;
 }
-/* .selected_table th{
+.selected_table caption{
+    margin-bottom: 3px;
+}
+.selected_table th{
     border: none;
-    width: 100%;
-} */
+}
 .selected_table tr td{
-    width: 85px;
+    width: 45px;
     height: 35px;
     border: 0.5px solid #646464;
+    text-align: center;
 }
 
 /* ---------------------------------------- */
@@ -388,9 +677,9 @@ h2{
 .total{
     padding: 25px 20px 10px 20px;
 }
-.total > p{
-    /* font-size: 15px; */
-}
+/* .total > p{
+    font-size: 15px;
+} */
 /* 최종결제금액 전체 */
 .total #total_all{
     display: flex;
@@ -449,7 +738,7 @@ border-radius: 0 0 0 10px;
     left: 0;
     width: 100%;
     height: 200px;
-    background-color: #f0f0f0;
+    background-color: #f2f4f5;
     font-size: 13px;
 }
 /* 푸터 전체 display flex */
@@ -502,6 +791,14 @@ border-radius: 0 0 0 10px;
 
 
 
+
+
+/* <<< 선택불가 css색 변경을 위해 class 추가함! */
+.main_seat .seat_table tbody tr td.seat_class.banned{
+    background: #cccccc;
+}
+
+
 /* 상훈 css */
 
 .ticket_body{
@@ -532,27 +829,39 @@ border-radius: 0 0 0 10px;
     font-weight: 500;
     padding-right: 20px;
     text-align: center;
+    height: 27px;
 }
 .main_seat .seat_table tbody tr td.seat_class{
     cursor: pointer;
     display: inline-block;
-    margin: 0 3px;
-    width: 23px;
-    height: 23px;
+    margin: 0 1px;
+    width: 25px;
+    height: 22px;
     text-align: center;
     /* padding: 10px; */
     font-size: 11px;
-    color: #3d9dbb;
+    color: #ffffff;
     border: 1px solid #3d9dbb;
-    /* background-color: #3d9dbb; */
+    background-color: #e5b200;
 }
 /* 좌석표 마우스오버/선택한좌석 */
-.selected{
+/* 2025 - 10 - 11 hover 이벤트는 selected class를 통해서 배경색 변경  */
+/* .main_seat .seat_table tbody tr td.seat_class:hover{
+    background-color: #503396;
+    color: #fff;
+} */
+.selected,
+.clicked{
+    /* !important = 우선순위라는뜻 */
+    background-color: #503396 !important;
+    color: #ffffff !important;
+}
+/* .selected{
     background-color: #503396;
     }
 .clicked{
     background-color: #503396;
-}
+} */
 
 /* 선택좌석 */
 .seat-selection .select_seat{

@@ -8,7 +8,6 @@
     list-style: none;
 }
 /* container 전체 */
-button{cursor: pointer;}
 .container{
     color: #222222;
     position: absolute;
@@ -55,6 +54,8 @@ button{cursor: pointer;}
     margin: 0 auto;
     width: 1100px;
     font-size: 19px;
+    position: relative;
+    z-index: 50;
 }
 .head .nav > ul{
     display: flex;
@@ -71,12 +72,12 @@ button{cursor: pointer;}
     cursor: pointer;
     /* background-size: cover; */
 }
-.head .nav ul li button img{
-    /* filter: invert(18%) sepia(3%) saturate(40%) hue-rotate(314deg) brightness(90%) contrast(91%); */
-    /* color: #313131; */
-}
+/* .head .nav ul li button img{
+    filter: invert(18%) sepia(3%) saturate(40%) hue-rotate(314deg) brightness(90%) contrast(91%);
+    color: #313131;
+} */
 /* 나비 메인로고 */
-.nav header > ul li{
+.nav > ul li{
     cursor: pointer;
 }
 
@@ -100,18 +101,22 @@ button{cursor: pointer;}
     content: url('img/btn-header-layer-close.png');
 }
 
-/* SITEMAP 모달 */
-.nav .modal{
+/* SITEMAP, 검색 공용css */
+.nav .modal,
+.search_modal{
     display: none;
-    position: fixed;
-    top: 98px;
-    left: 0;
-    width: 100%;
+    position: absolute;
+    top: 67px;
+    left: 50%;
+    /* right: 0; */
+    width: 100vw;  /* 화면 전체 사이즈 */
+    transform: translateX(-50%);
     justify-content: center;
     align-items: flex-start;
-    background: rgba(0,0,0,0.6);
     z-index: 100;
 }
+
+/* SITEMAP 모달 */
 .nav .modal.active{
     display: flex;
 }
@@ -174,24 +179,19 @@ button{cursor: pointer;}
 }
 
 /* 검색 모달 */
-.search_modal{
-    display: none;
-    position: fixed;
-    top: 97px;
-    left: 0;
-    width: 100%;
-    justify-content: center;
-    align-items: flex-start;
-    z-index: 100;
-    padding: 35px;
-}
+
 .search_modal.active{
     display: flex;
     align-items: center;
     background-color: #351f67;
+    /* width: 100%; */        /* <<<<<<<<<<<<<<<<<<<<<<< 검색창 폭 수정필요 */
+    padding: 35px;
+}
+.search_all{
+    width: 1100px;
 }
 .search_modal .search_content{
-    width: 675px;
+    width: 100%;
 }
 .search_content em{
     font-size: 25px;
@@ -307,6 +307,9 @@ button{cursor: pointer;}
     font-size: 14px;
     display: flex;
 }
+/* .quickBtn a:hover{
+    border-bottom: 1px solid #646464;
+} */
 
 /* ---------------------------------------- */
 

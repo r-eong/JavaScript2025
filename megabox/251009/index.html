@@ -31,9 +31,167 @@
                 <ul>
                     <li>
                         <!-- 좌측 3줄 메뉴버튼 - SITEMAP -->
-                        <button><img src="img/ico-sitemap.png" alt="사이트맵"/></button>
-                        <!-- 좌측 검색 버튼 - 예메율 순, 메가박스 관객순 -->
-                        <button><img src="img/ico-search.png" alt="검색"/></button>
+                        <!-- 사이트맵 버튼 -->
+                        <button class="sitemapBtn">
+                            <img src="img/ico-sitemap.png" alt="사이트맵">
+                        </button>
+
+                        <!-- 모달 영역 (버튼 아래에만 감싸주기만 함) -->
+                        <div class="modal">
+                            <div class="modal_content">
+                                <h2>SITEMAP</h2>
+                                <div class="sitemap_grid">
+                                    <div class="sitemap_top">
+                                        <div>
+                                            <h3>영화</h3>
+                                            <ul>
+                                                <li><a href="#none">전체영화</a></li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <h3>예매</h3>
+                                            <ul>
+                                                <li><a href="#none">빠른예매</a></li>
+                                                <li><a href="#none">상영시간표</a></li>
+                                                <li><a href="#none">더 부티크 프라이빗 예매</a></li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <h3>극장</h3>
+                                            <ul>
+                                                <li><a href="#none">전체극장</a></li>
+                                                <li><a href="#none">특별관</a></li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <h3>이벤트</h3>
+                                            <ul>
+                                                <li><a href="#none">진행중 이벤트</a></li>
+                                                <li><a href="#none">지난 이벤트</a></li>
+                                                <li><a href="#none">당첨자 발표</a></li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <h3>스토어</h3>
+                                            <ul>
+                                                <li><a href="#none">새로운 상품</a></li>
+                                                <li><a href="#none">메가티켓</a></li>
+                                                <li><a href="#none">팝콘/음료/굿즈</a></li>
+                                                <li><a href="#none">포인트몰</a></li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <h3>나의 메가박스</h3>
+                                            <ul>
+                                                <li><a href="#none">나의 메가박스 홈</a></li>
+                                                <li><a href="#none">예매/구매내역</a></li>
+                                                <li><a href="#none">영화관람권</a></li>
+                                                <li><a href="#none">스토어교환권</a></li>
+                                                <li><a href="#none">할인/제휴쿠폰</a></li>
+                                                <li><a href="#none">멤버십포인트</a></li>
+                                                <li><a href="#none">나의 무비스토리</a></li>
+                                                <li><a href="#none">나의 이벤트 응모내역</a></li>
+                                                <li><a href="#none">나의 문의내역</a></li>
+                                                <li><a href="#none">자주쓰는 할인카드</a></li>
+                                                <li><a href="#none">회원정보</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="sitemap_bottom">
+                                        <div>
+                                            <h3>혜택</h3>
+                                            <ul>
+                                                <li><a href="#none">멤버십 안내</a></li>
+                                                <li><a href="#none">VIP LOUNGE</a></li>
+                                                <li><a href="#none">제휴/할인</a></li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <h3>고객센터</h3>
+                                            <ul>
+                                                <li><a href="#none">고객센터 홈</a></li>
+                                                <li><a href="#none">자주묻는질문</a></li>
+                                                <li><a href="#none">공지사항</a></li>
+                                                <li><a href="#none">1:1문의</a></li>
+                                                <li><a href="#none">단체/대관문의</a></li>
+                                                <li><a href="#none">분실물문의</a></li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <h3>회사소개</h3>
+                                            <ul>
+                                                <li><a href="#none">메가박스소개</a></li>
+                                                <li><a href="#none">사회공헌</a></li>
+                                                <li><a href="#none">홍보자료</a></li>
+                                                <li><a href="#none">제휴/부대사업문의</a></li>
+                                                <li><a href="#none">온라인제보센터</a></li>
+                                                <li><a href="#none">IR자료</a></li>
+                                                <li><a href="#none">인재채용</a></li>
+                                                <li><a href="#none">윤리경영</a></li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <h3>이용정책</h3>
+                                            <ul>
+                                                <li><a href="#none">이용약관</a></li>
+                                                <li><a href="#none">위치기반서비스 이용약관</a></li>
+                                                <li><a href="#none">개인정보처리방침</a></li>
+                                                <li><a href="#none">스크린수배정에관한기준</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 좌측 검색 버튼 -->
+                        <button class="searchBtn">
+                            <img src="img/ico-search.png" alt="검색">
+                        </button>
+                        <!-- 검색 모달 -->
+                        <div class="search_modal">
+                            <div class="search_content">
+                                <!-- 탭 메뉴 전체 -->
+                                <div class="rank_tabs">
+                                    <button class="rank_tab active" data-target="booking">예매율 순</button>
+                                    <button class="rank_tab" data-target="megabox">메가박스 관객순</button>
+                                </div>
+
+                                <!-- 예매율 순 -->
+                                <div class="rank_panel active" id="booking">
+                                    <div class="rank_item">
+                                        <img src="img/rBGmxIIt5wLgjk1nEQr84Crh2Fvxhn4o_316.jpg" alt="영화 포스터">
+                                        <ul>
+                                            <li><em>1</em><a>극장판 체인소 맨:레제편</a></li>
+                                            <li><em>2</em><a>보스</a></li>
+                                            <li><em>3</em><a>어쩔수가없다</a></li>
+                                            <li><em>4</em><a>투모로우바이투게더 브이알 콘서트:하트 어택</p></li>
+                                            <li><em>5</em><a>원 배틀 애프터 어나더</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <!-- 메가박스 관객순 -->
+                                <div class="rank_panel" id="megabox">
+                                    <div class="rank_item">
+                                        <img src="img/hWiZN7PP9G18jB18bS2BfyOTRDPpJH0m_316.jpg" alt="영화 포스터">
+                                        <ul>
+                                            <li><em>1</em><a>F1 더 무비</a></li>
+                                            <li><em>2</em><a>극장판 귀멸의 칼날:무한성편</a></li>
+                                            <li><em>3</em><a>좀비딸</a></li>
+                                            <li><em>4</em><a>진격의 거인 완결편 더 라스트 어택</a></li>
+                                            <li><em>5</em><a>하얼빈</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="searchBox">
+                                <input type="text" placeholder="영화 제목을 입력하세요">
+                                <button>
+                                    <img src="img/ico-search.png"/>
+                                </button>
+                            </div>
+                        </div>
                     </li>
                     <!-- 나비 -->
                     <li>영화</li>
@@ -54,13 +212,15 @@
         <!-- 섹션 - 빠른예매, 좌석, 선택상태 등등 -->
         <!-- 메뉴바 하단 홈버튼>예매>빠른예매 부분 -->
         <div class="quickBtn">
-            <a href="#none">
-                <img src="img/bg-location-home.png" alt="홈화면">
-            </a>
-            <img src="img/bg-location-arr.png">
-            <a href="#none">예매</a>
-            <img src="img/bg-location-arr.png">
-            <a href="#none">빠른예매</a>
+            <div class="quickText">
+                <a href="#none">
+                    <img src="img/bg-location-home.png" alt="홈화면">
+                </a>
+                <img src="img/bg-location-arr.png">
+                <a href="#none">예매</a>
+                <img src="img/bg-location-arr.png">
+                <a href="#none">빠른예매</a>
+            </div>
         </div>
 
         <!-- 빠른 예매 -->
@@ -75,7 +235,7 @@
                 <!-- 관람인원선택, 초기화 -->
                 <div class="sec_controls">
                     <p>관람인원선택</p>
-                    <button>
+                    <button onclick="resetBtn(0)">
                         <img src="img/ico-reset-small.png"/>
                         초기화
                     </button>
@@ -193,10 +353,10 @@
                                 </tr>
                             </thead>
                         </table>
-                        <table class="selected_table" border="1">
                         <!-- 선택좌석 -->
+                        <table class="selected_table" border="1">
                             <!-- <tbody> -->
-                                <th>선택 좌석</th>
+                                <caption>선택 좌석</caption>
                                 <tr>
                                     <td class="select_seat">-</td>
                                     <td class="select_seat">-</td>
