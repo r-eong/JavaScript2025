@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>megabox 빠른예매</title>
     <link rel="stylesheet" href="index.css">
+    <script defer src = "movie.js"> </script>
 </head>
 <body>
     <!-- 전체 -->
@@ -55,13 +56,15 @@
         <div class="quickBtn">
             <a href="#none">
                 <img src="img/bg-location-home.png" alt="홈화면">
-            </a>&nbsp;&gt;&nbsp;
-            <a href="#none">예매</a>&nbsp;&gt;&nbsp;
+            </a>
+            <img src="img/bg-location-arr.png">
+            <a href="#none">예매</a>
+            <img src="img/bg-location-arr.png">
             <a href="#none">빠른예매</a>
         </div>
 
         <!-- 빠른 예매 -->
-        <h2>빠른 예매</h2>
+        <h2>빠른예매</h2>
 
         <!-- 섹션 -->
         <div class="sec">
@@ -80,26 +83,38 @@
                 <div class="people_seat">
                     <!-- 성인, 청소년, 경로, 우대 인원수 선택 -->
                     <div class="sec_audienceGroup">
-                        <div class="peopel01">
+                        <div class="adult_number">
                             <p>성인</p>
-                            <button class="minus" onclick="minusBtn(0)">-</button><span class="people">0</span><button class="plus" onclick="plusBtn(0)">+</button>
+                            <button class="minus" onclick="minusBtn(0)">-</button>
+                            <span class="people">0</span>
+                            <button class="plus" onclick="plusBtn(0)">+</button>
                         </div>
                         <div class="peopel01">
                             <p>청소년</p>
-                            <button class="minus" onclick="minusBtn(1)">-</button><span class="people">0</span><button class="plus" onclick="plusBtn(1)">+</button>
+                            <button class="minus" onclick="minusBtn(1)">-</button>
+                            <span class="people">0</span>
+                            <button class="plus" onclick="plusBtn(1)">+</button>
                         </div>
                         <div class="peopel01">
                             <p>경로</p>
-                            <button class="minus" onclick="minusBtn(2)">-</button><span class="people">0</span><button class="plus" onclick="plusBtn(2)">+</button>
+                            <button class="minus" onclick="minusBtn(2)">-</button>
+                            <span class="people">0</span>
+                            <button class="plus" onclick="plusBtn(2)">+</button>
                         </div>
                         <div class="peopel01">
                             <p>우대</p>
-                            <button class="minus" onclick="minusBtn(3)">-</button><span class="people">0</span><button class="plus" onclick="plusBtn(3)">+</button>
+                            <button class="minus" onclick="minusBtn(3)">-</button>
+                            <span class="people">0</span>
+                            <button class="plus" onclick="plusBtn(3)">+</button>
                         </div>
+
                     </div>
                     <!-- 좌석 선택박스 -->
-                    <div class="selectBox">
-    
+                    <div class="main_seat">
+                        <img src="img/img-theater-screen.png"/>
+                        <table class="seat_table">
+
+                        </table>
                     </div>
                 </div>
             </div>
@@ -126,7 +141,9 @@
                                 <div class="timeBtn">
                                     <!-- 기존 시간 -->
                                     <ul>
-                                        <li id="timeBtn01"><span>11:45~14:13</span><img src="img/bg-other-time-arr-down.png" alt="시간표 보기"/></li>
+                                        <li id="timeBtn01"><span>11:45~14:13</span>
+                                            <img src="img/bg-other-time-arr-down.png" alt="시간표 보기"/>
+                                        </li>
                                     </ul>
                                     <!-- 선택 가능 시간 -->
                                     <ul id="timeBtn02">
@@ -154,38 +171,50 @@
                     </div>
                     <!-- 선택좌석 -->
                     <div class="seat-selection">
-                        <table class="seatSelection">
+                        <table class="seatSelection" border="1">
                             <!-- 좌석 종류 -->
                             <thead>
                                 <tr id="seatSelection">
-                                    <td><img src="img/bg-seat-condition-choice-s.png.png" alt="선택">선택</td>
-                                    <td><img src="img/bg-seat-condition-finish-s.png.png" alt="예매완료">예매완료</td>
-                                    <td><img src="img/bg-seat-condition-impossible-s.png.png" alt="선택불가">선택불가</td>
-                                    <td><img src="img/bg-seat-condition-disabled-s.png.png" alt="장애인석">장애인석</td>
-                                    <td><div class="reclinerBox"></div>리클라이너석</td>
+                                    <td>
+                                        <img src="img/bg-seat-condition-choice-s.png.png" alt="선택">선택
+                                    </td>
+                                    <td>
+                                        <img src="img/bg-seat-condition-finish-s.png.png" alt="예매완료">예매완료
+                                    </td>
+                                    <td>
+                                        <img src="img/bg-seat-condition-impossible-s.png.png" alt="선택불가">선택불가
+                                    </td>
+                                    <td>
+                                        <img src="img/bg-seat-condition-disabled-s.png.png" alt="장애인석">장애인석
+                                    </td>
+                                    <td>
+                                        <div class="reclinerBox"></div>리클라이너석
+                                    </td>
                                 </tr>
                             </thead>
-                            <!-- 선택좌석 -->
-                            <tbody>
+                        </table>
+                        <table class="selected_table" border="1">
+                        <!-- 선택좌석 -->
+                            <!-- <tbody> -->
                                 <th>선택 좌석</th>
                                 <tr>
-                                    <td>-</td>
-                                    <td>-</td>
+                                    <td class="select_seat">-</td>
+                                    <td class="select_seat">-</td>
                                 </tr>
                                 <tr>
-                                    <td>-</td>
-                                    <td>-</td>
+                                    <td class="select_seat">-</td>
+                                    <td class="select_seat">-</td>
                                 </tr>
                                 <tr>
-                                    <td>-</td>
-                                    <td>-</td>
+                                    <td class="select_seat">-</td>
+                                    <td class="select_seat">-</td>
                                 </tr>
                                 <tr>
-                                    <td>-</td>
-                                    <td>-</td>
+                                    <td class="select_seat">-</td>
+                                    <td class="select_seat">-</td>
                                 </tr>
-                            </tbody>
-                        </table>
+                            <!-- </tbody> -->
+                    </table>
                     </div>
                     <!-- 최종 금액 -->
                     <div class="total">
@@ -235,50 +264,21 @@
                 </div>
             </div>
         </footer>
+
+        <!-- 모달 -->
+        <div class="p_modal">
+            <div class="md_top">
+                <p>알림</p>
+                <!-- <img src="img/btn-layer-close.png" alt="창 닫기"/> -->
+            </div>
+            <div class="md_main">
+                <p class="md_p"></p>
+            </div>
+            <div class="p_Btn">
+                <button class="offBtn">확인</button>
+            </div>
+        </div>
+        <div class="overlay"></div>
     </div>
-
-    <!-- js -->
-    <script>
-        // 인원수 선택 버튼
-        // 결과값 담을 변수
-        // let peopleCount = 0;
-        // 결과 출력할 위치
-        let people = document.querySelectorAll('.people');
-        // 버튼
-        let minus = document.querySelectorAll('.minus');
-        // let plus = document.querySelectorAll('.plus');
-        // -
-            function minusBtn(minusIndex){
-                if(people[minusIndex].textContent > 0){
-                    people[minusIndex].textContent--;
-                    console.log(people[minusIndex].textContent);
-                }
-                people[minusIndex].innerHTML = people[minusIndex].textContent--;
-            }
-        // +
-            function plusBtn(plusIndex){
-            console.log(plusIndex);
-                if(people[plusIndex].textContent<= 7){
-                    // 7명 초과시 모달창 뜨게
-                    people[plusIndex].textContent++;
-                    // console.log(people[plusIndex].textContent);
-                }else{
-                    console.log(`인원선택은 총 8명까지 가능합니다.`)
-                }
-                people[plusIndex].innerHTML = people[plusIndex].textContent++;
-            }
-        
-        // 섹션 우측 시간 토글
-        // 기존 시간
-        let timeBtn01 = document.querySelector('#timeBtn01');
-        // on/off 할 선택 가능 시간
-        let timeBtn02 = document.querySelector('#timeBtn02');
-
-        // 토글
-        timeBtn01.addEventListener('click',() =>{
-            timeBtn02.classList.toggle('active');
-        })
-
-    </script>
 </body>
 </html>

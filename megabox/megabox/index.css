@@ -69,7 +69,6 @@ button{cursor: pointer;}
     border: none;
     background-color: transparent;
     cursor: pointer;
-<<<<<<< HEAD
     /* background-size: cover; */
 }
 .head .nav ul li button img{
@@ -284,14 +283,6 @@ button{cursor: pointer;}
 }
 
 
-=======
-}
-/* 나비 메인로고 */
-.nav ul li{
-    cursor: pointer;
-}
-
->>>>>>> 9069a35 (2025-10-13 오전)
 /* ---------------------------------------- */
 
 /* 메뉴바 하단 홈버튼>예매>빠른예매 부분 */
@@ -300,7 +291,6 @@ button{cursor: pointer;}
     height: 42px;
     padding: 0 122.500px;
     border-top: 1px solid #222222;
-<<<<<<< HEAD
     margin-top: 7px;
     display: flex;
     justify-content: center;
@@ -310,12 +300,6 @@ button{cursor: pointer;}
     align-items: center;
     gap: 10px;
     width: 1100px;
-=======
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 7px;
->>>>>>> 9069a35 (2025-10-13 오전)
 }
 .quickBtn a{
     text-decoration: none;
@@ -540,13 +524,9 @@ h2{
     margin-right: 20px;
 }
 /* ---------------------------------------- */
-<<<<<<< HEAD
 table{
     border-collapse: separate;
 }
-=======
-
->>>>>>> 9069a35 (2025-10-13 오전)
 /* 선택좌석 table */
 .seat-selection{
     display: flex;
@@ -601,18 +581,13 @@ table{
 .selected_table{
     width: 135px;
     display: flex;
-<<<<<<< HEAD
     flex-direction: column;
     align-items: center;
     /* gap: 5px; */
-=======
-    justify-content: space-between;
->>>>>>> 9069a35 (2025-10-13 오전)
     /* margin: 15px 15px 0 15px; */
     padding: 15px;
     border: 0.5px solid #646464;
     border-radius: 0 5px 5px 0;
-<<<<<<< HEAD
     border-spacing: 5px;
 }
 .selected_table caption{
@@ -626,18 +601,6 @@ table{
     height: 35px;
     border: 0.5px solid #646464;
     text-align: center;
-=======
-
-}
-/* .selected_table th{
-    border: none;
-    width: 100%;
-} */
-.selected_table tr td{
-    width: 85px;
-    height: 35px;
-    border: 0.5px solid #646464;
->>>>>>> 9069a35 (2025-10-13 오전)
 }
 
 /* ---------------------------------------- */
@@ -645,12 +608,6 @@ table{
 /* 인원수 */
 .total{
     padding: 25px 20px 10px 20px;
-<<<<<<< HEAD
-=======
-}
-.total > p{
-    /* font-size: 15px; */
->>>>>>> 9069a35 (2025-10-13 오전)
 }
 /* .total > p{
     font-size: 15px;
@@ -796,15 +753,11 @@ border-radius: 0 0 0 10px;
     font-weight: 500;
     padding-right: 20px;
     text-align: center;
-<<<<<<< HEAD
     height: 27px;
-=======
->>>>>>> 9069a35 (2025-10-13 오전)
 }
 .main_seat .seat_table tbody tr td.seat_class{
     cursor: pointer;
     display: inline-block;
-<<<<<<< HEAD
     margin: 0 1px;
     width: 25px;
     height: 22px;
@@ -828,29 +781,11 @@ border-radius: 0 0 0 10px;
     color: #ffffff !important;
 }
 /* .selected{
-=======
-    margin: 0 3px;
-    width: 23px;
-    height: 23px;
-    text-align: center;
-    /* padding: 10px; */
-    font-size: 11px;
-    color: #3d9dbb;
-    border: 1px solid #3d9dbb;
-    /* background-color: #3d9dbb; */
-}
-/* 좌석표 마우스오버/선택한좌석 */
-.selected{
->>>>>>> 9069a35 (2025-10-13 오전)
     background-color: #503396;
     }
 .clicked{
     background-color: #503396;
-<<<<<<< HEAD
 } */
-=======
-}
->>>>>>> 9069a35 (2025-10-13 오전)
 
 /* 선택좌석 */
 .seat-selection .select_seat{

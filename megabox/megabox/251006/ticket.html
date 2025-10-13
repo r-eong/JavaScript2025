@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        .ticket_body{
+            float: right;
+        }
+         .seat_selected table td{
+            width: 40px;
+            height: 40px;
+            text-align: center;
+        }
+        .main_seat{display: flex;}
+        .main_seat table{
+           
+            border: 1px solid black;
+        }
+         .main_seat table tr td{
+            cursor: pointer;
+            width: 20px;
+            height: 20px;
+            border: 1px solid rgba(0, 0, 0, 0.26);
+            text-align: center;
+        }
+        .selected{
+            background-color: greenyellow;
+        }
+        .clicked{
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div id = '#ticket_container'>
+        <div class= "ticket_body">
+            <div class="body_main">
+                <div class="main_personcount">
+                    <label>성인</label>
+                    <input type="number" class="adult_number" value="3">
+                    <label>청소년</label>
+                    <input type="number" class="nonadult_number">
+                    <label>경로</label>
+                    <input type="number" class="disable_number">
+                    <label>우대</label>
+                    <input type="number" class="first_number">
+
+                </div>
+                <div class="main_seat">
+                    <table class="seat_table">
+
+                    </table>
+                </div>
+            </div>
+
+            <div class="body_sub">
+                <div class="sub_name"></div>
+                <div class="sub_info"></div>
+                <div class="sub_seat">
+                    <div class="seat_info">
+                        <ul>
+                            <li>선택</li>
+                            <li>예매완료</li>
+                            <li>선택불가</li>
+                            <li>장애인석</li>
+                            <li>리클라이너석</li>
+                        </ul>
+
+                    </div>
+                    <div class="seat_selected">
+                        <table class="selected_table" border="1">
+                            <tr>
+                                <td class="select_seat">-</td>
+                                <td class="select_seat">-</td>
+                            </tr>
+                            <tr>
+                                <td class="select_seat">-</td>
+                                <td class="select_seat">-</td>
+                            </tr>
+                            <tr>
+                                <td class="select_seat">-</td>
+                                <td class="select_seat">-</td>
+                            </tr>
+                            <tr>
+                                <td class="select_seat">-</td>
+                                <td class="select_seat">-</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="sub_result">
+                    <label>최종결제금액</label>
+                    <p class="result_value"></p>
+                </div>
+                <div class="sub_submit">
+                    <div class="submit_before"></div>
+                    <div class="submit_after"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script>
+        let seat = Array.from(Array(), ()=> new Array());
+         let maxseat_x = 10; let maxseat_y = 10;
+         let seat_selected = [];
+         let select_count = 0;
+         let remain_person = 5;
+         let start = true
+
+         let adult_number = document.querySelector('.adult_number');
+         
+      
+  function even(remain_person){
+           
+            if(remain_person == 1){
+                return true;
+            }else if(remain_person > 1) return false;
+          
+            
+        
+    }
+
+        function seatSet(){
+
+            
+        let number = Number(document.querySelector('.adult_number').value)
+        remain_person = number;
+        let main_seat = document.querySelector('.seat_table');
+
+        let seat_html = '';
+        let res_count = 3;
+        for(let i = 0; i < maxseat_x; i++){
+            seat_html += '<tr>'
+            let line_text = String.fromCharCode('A'.charCodeAt() + i)
+            seat_html += `<td> ${line_text} </td>`
+            for(let j = 0; j< maxseat_y; j++){
+                seat_html += `<td class='seat_class'>`;
+                seat_html += line_text+':'+Number(j+1);
+                seat_html += `</td>`;
+            }
+            seat_html += '</tr>';
+           
+        }
+         main_seat.innerHTML = seat_html;
+        
+        seatAddEvent()
+    }
+
+
+    
+
+    function seatAddEvent(){
+        console.log('남은인원'+remain_person)
+        console.log('예매인원' + select_count)
+        let adult_number = document.querySelector('.adult_number').value;
+       
+        let seat_array =  document.querySelectorAll('.seat_class');
+        let selected_table = document.querySelector('.selected_table');
+        
+        console.log('호출' + even(remain_person))
+
+    //     if(even(remain_person)){
+    //     for(let i = 0; i<seat_array.length; i++){
+    //         if(i%2==0) {
+                // if(!(seat_array[i].classList.contains('clicked'))){
+                //      seat_array[i].textContent = 'x';
+                //      seat_array[i].onclick = function(){};
+                // }
+
+    //         }
+    //         else{
+            
+    //         seat_array[i].addEventListener('mouseover', function mouseOver(){
+    //             this.classList.add('selected');
+    //         })
+    //         seat_array[i].addEventListener('mouseout', function mouserOut(){
+    //             this.classList.remove('selected');
+    //         })
+    //         seat_array[i].onclick = function(){
+          
+    //             if(this.classList.contains('clicked')){
+    //                 this.classList.remove('clicked')
+    //                 remain_person++;
+    //                 seat_selected.splice(seat_selected.indexOf(this.textContent),1);
+    //                 select_count--;
+                    
+                   
+
+    //                 clickF();
+    //             }
+    //             else if(remain_person != 0){
+    //                 this.classList.add('clicked')
+    //                 seat_selected[select_count] = this.textContent
+    //                 remain_person--;
+    //                 select_count++;
+                    
+    //                 clickF();
+    //             }
+    //             else alert('좌석 선택이 완료되었습니다')
+        
+    //         }
+    //     }
+
+    //     }
+    // }
+    //     else if(even(remain_person) == false){
+            
+        for(let i = 0; i<seat_array.length; i++){
+                let next_array = i%2 == 0 ? seat_array[i+1] : seat_array[i-1]
+                if(even(remain_person) && !(seat_array[i].classList.contains('clicked')) && i%2==0){
+                 
+                     seat_array[i].textContent = 'x';
+                     seat_array[i].onclick = function(){};
+                
+                }else{
+                    
+
+                }
+        
+            
+            seat_array[i].addEventListener('mouseover', function mouserOver(){
+                this.classList.add('selected');
+                if(even(remain_person) == false) next_array.classList.add('selected'); 
+                //코드 결함 : 실행은 잘되나 계속해서 이벤트가 더해짐 이벤트 리스너를 한번만 실행하게 수정해야 함.
+            })
+            
+            seat_array[i].addEventListener('mouseout', function mouserOut(){
+                this.classList.remove('selected');
+                if(even(remain_person) == false)  next_array.classList.remove('selected');
+               
+            })
+            seat_array[i].onclick = function(){
+               
+                if(this.classList.contains('clicked')){
+                    this.classList.remove('clicked')
+                  
+
+                    seat_selected.splice(seat_selected.indexOf(this.textContent),1);
+                    
+                
+                if(next_array.classList.contains('clicked')){
+                    next_array.classList.remove('clicked');
+                    seat_selected.splice(seat_selected.indexOf(next_array.textContent),1);
+                    remain_person++;
+                    select_count--;
+                      }
+                      remain_person++;
+                     select_count--;
+                     clickF();
+                    
+                    }
+                      
+                    
+                 
+                    
+                    
+                    
+        
+                else if(remain_person != 0){
+            
+                    this.classList.add('clicked')
+                   
+                    
+                    seat_selected.push(this.textContent) 
+                    
+                    if(even(remain_person) == false){
+                    next_array.classList.add('clicked')
+                    seat_selected.push(next_array.textContent)  
+                    select_count++;
+                    remain_person--;
+                    }
+                    
+                    select_count++;
+                    remain_person--;
+                    
+                    clickF();
+                   
+                }
+                else alert('좌석 선택이 완료되었습니다')
+
+              
+
+                 
+                
+            }
+
+        }
+    }
+
+        
+
+//}
+
+
+    function clickF(){
+         let select_seat = document.querySelectorAll('.select_seat')
+
+        for(let i = 0; i < select_seat.length; i++){
+            //테이블 초기화
+            if(select_seat[i].classList.contains(`selected`)){
+            select_seat[i].classList.remove('selected');
+            select_seat[i].textContent = '-';
+
+            }else break;
+       
+        }
+
+        for(let i = 0; i < select_count; i++){
+            select_seat[i].classList.add('selected');
+            select_seat[i].textContent = seat_selected[i];
+           
+    
+            
+        }
+           console.log('시트' + seat_selected)
+seatAddEvent()
+
+}
+
+function reset(){
+    
+    let select_seat = document.querySelectorAll('selec_seat')
+
+    
+    
+    for(let i = 0; i < select_seat.length; i++){
+            //테이블 초기화
+            if(select_seat[i].classList.contains(`selected`)){
+            select_seat[i].classList.remove('selected');
+            select_seat[i].textContent = '-';
+
+            }else break;
+       
+        }
+    seat_selected = new Array();
+    console.log(select_seat)
+ 
+    select_count = 0;
+
+   
+   seatSet()
+}
+
+
+  
+    
+
+//기본실행 
+    seatSet()
+    seatAddEvent() // 함수 호출
+    adult_number.addEventListener('input',  reset) //매개변수 
+
+      
+
+
+        
+        
+       
+
+
+    </script>
+</body>
+</html>

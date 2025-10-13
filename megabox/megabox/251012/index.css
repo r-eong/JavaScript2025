@@ -8,13 +8,15 @@
     list-style: none;
 }
 /* container 전체 */
-button{cursor: pointer;}
 .container{
     color: #222222;
-    position: absolute;
+    position: relative;
     width: 100%;
     text-decoration: none;
     font-weight: normal;
+}
+body{
+    overflow-x: hidden;
 }
 /* ---------------------------------------- */
 /* 헤더 전체 */
@@ -55,6 +57,8 @@ button{cursor: pointer;}
     margin: 0 auto;
     width: 1100px;
     font-size: 19px;
+    position: relative;
+    z-index: 50;
 }
 .head .nav > ul{
     display: flex;
@@ -69,23 +73,78 @@ button{cursor: pointer;}
     border: none;
     background-color: transparent;
     cursor: pointer;
-<<<<<<< HEAD
     /* background-size: cover; */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
-.head .nav ul li button img{
-    /* filter: invert(18%) sepia(3%) saturate(40%) hue-rotate(314deg) brightness(90%) contrast(91%); */
-    /* color: #313131; */
+
+.nav ul li.on:hover::before{
+    content: '';
+    width: 100%;
+    height: 5px;
+    background-color: #3d9dbb;
+    display: inline-block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
 }
-/* 나비 메인로고 */
-.nav header > ul li{
+
+
+/* 나비 */
+/* 메인 메뉴 전체 */
+.nav ul{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 35px;
+  position: relative;
+}
+
+.nav ul li{
+    position: relative;
     cursor: pointer;
+    padding-bottom: 15px;
+}
+
+/* 서브 메뉴(navSUB) 숨김 기본 상태 */
+.nav ul li .navSUB{
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200vw;
+  background-color: #3d9dbb;
+  text-align: center;
+  padding: 10px 0;
+  z-index: 99;
+}
+
+/* li(id=on)에 마우스 올렸을 때 서브메뉴 표시 */
+.nav ul li.on:hover .navSUB{
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+/* 서브 메뉴 안의 링크 */
+.nav ul li.on .navSUB a{
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+  transition: all 0.2s;
+}
+
+/* 서브 메뉴 hover 시 밑줄 */
+.nav ul li.on .navSUB a:hover{
+  text-decoration: underline;
 }
 
 /* nav 좌측 3줄메뉴 버튼 */
 /* 버튼 이미지 전환 */
 .sitemapBtn img{
     width: 24px;
-    height: 24px;
     content: url('img/ico-sitemap.png');
 }
 .sitemapBtn.active img{
@@ -93,31 +152,34 @@ button{cursor: pointer;}
 }
 
 .searchBtn img{
-    width: 24px;
-    height: 24px;
+    width: 20px;
     content: url('img/ico-search.png');
 }
 .searchBtn.active img{
     content: url('img/btn-header-layer-close.png');
 }
 
-/* SITEMAP 모달 */
-.nav .modal{
+/* SITEMAP, 검색 공용css */
+.modal,
+.search_modal{
     display: none;
-    position: fixed;
+    position: absolute;
     top: 98px;
-    left: 0;
-    width: 100%;
+    left: 50%;
+    /* right: 0; */
+    width: 100vw;  /* 화면 전체 사이즈 */
+    transform: translateX(-50%);
     justify-content: center;
     align-items: flex-start;
-    background: rgba(0,0,0,0.6);
     z-index: 100;
 }
-.nav .modal.active{
+
+/* SITEMAP 모달 */
+.modal.active{
     display: flex;
 }
 
-.nav .modal_content{
+.modal_content{
     background: #333;
     color: #fff;
     width: 100%;
@@ -126,7 +188,7 @@ button{cursor: pointer;}
     flex-direction: column;
     align-items: center;
 }
-.nav .modal_content h2{
+.modal_content h2{
     font-size: 23px;
     margin: 0;
     margin-bottom: 30px;
@@ -175,24 +237,25 @@ button{cursor: pointer;}
 }
 
 /* 검색 모달 */
-.search_modal{
-    display: none;
-    position: fixed;
-    top: 97px;
-    left: 0;
-    width: 100%;
-    justify-content: center;
-    align-items: flex-start;
-    z-index: 100;
+
+.search_modal.active{
+    display: block;
+    background-color: #351f67;
+    /* width: 100%; */
     padding: 35px;
 }
-.search_modal.active{
+.search_modal > div{
     display: flex;
     align-items: center;
-    background-color: #351f67;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1100px;
+}
+.search_all{
+    width: 1100px;
 }
 .search_modal .search_content{
-    width: 675px;
+    width: 100%;
 }
 .search_content em{
     font-size: 25px;
@@ -200,6 +263,7 @@ button{cursor: pointer;}
 }
 /* 검색전체 */
 .searchBox{
+    display: flex;
     border-bottom: 1px solid #dbdbdb;
 }
 .search_modal input{
@@ -284,14 +348,6 @@ button{cursor: pointer;}
 }
 
 
-=======
-}
-/* 나비 메인로고 */
-.nav ul li{
-    cursor: pointer;
-}
-
->>>>>>> 9069a35 (2025-10-13 오전)
 /* ---------------------------------------- */
 
 /* 메뉴바 하단 홈버튼>예매>빠른예매 부분 */
@@ -300,7 +356,6 @@ button{cursor: pointer;}
     height: 42px;
     padding: 0 122.500px;
     border-top: 1px solid #222222;
-<<<<<<< HEAD
     margin-top: 7px;
     display: flex;
     justify-content: center;
@@ -310,12 +365,6 @@ button{cursor: pointer;}
     align-items: center;
     gap: 10px;
     width: 1100px;
-=======
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 7px;
->>>>>>> 9069a35 (2025-10-13 오전)
 }
 .quickBtn a{
     text-decoration: none;
@@ -323,6 +372,9 @@ button{cursor: pointer;}
     font-size: 14px;
     display: flex;
 }
+/* .quickBtn a:hover{
+    border-bottom: 1px solid #646464;
+} */
 
 /* ---------------------------------------- */
 
@@ -540,13 +592,9 @@ h2{
     margin-right: 20px;
 }
 /* ---------------------------------------- */
-<<<<<<< HEAD
 table{
     border-collapse: separate;
 }
-=======
-
->>>>>>> 9069a35 (2025-10-13 오전)
 /* 선택좌석 table */
 .seat-selection{
     display: flex;
@@ -601,18 +649,13 @@ table{
 .selected_table{
     width: 135px;
     display: flex;
-<<<<<<< HEAD
     flex-direction: column;
     align-items: center;
     /* gap: 5px; */
-=======
-    justify-content: space-between;
->>>>>>> 9069a35 (2025-10-13 오전)
     /* margin: 15px 15px 0 15px; */
     padding: 15px;
     border: 0.5px solid #646464;
     border-radius: 0 5px 5px 0;
-<<<<<<< HEAD
     border-spacing: 5px;
 }
 .selected_table caption{
@@ -626,32 +669,11 @@ table{
     height: 35px;
     border: 0.5px solid #646464;
     text-align: center;
-=======
-
-}
-/* .selected_table th{
-    border: none;
-    width: 100%;
-} */
-.selected_table tr td{
-    width: 85px;
-    height: 35px;
-    border: 0.5px solid #646464;
->>>>>>> 9069a35 (2025-10-13 오전)
 }
 
 /* ---------------------------------------- */
 /* 우측 하단 최종 결제인원, 금액 */
 /* 인원수 */
-.total{
-    padding: 25px 20px 10px 20px;
-<<<<<<< HEAD
-=======
-}
-.total > p{
-    /* font-size: 15px; */
->>>>>>> 9069a35 (2025-10-13 오전)
-}
 /* .total > p{
     font-size: 15px;
 } */
@@ -660,6 +682,10 @@ table{
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+    margin: 0 20px;
+}
+.total .div_person{
+    margin: 20px 7px 3px 7px;
 }
 /* 최종결제금액 */
 .total #total_all span{
@@ -700,7 +726,7 @@ border-radius: 0 0 0 10px;
 }
 /* 다음버튼 */
 .sec_right .prev-next button#nextBtn{
-    background-color: #3d9dbb;
+    background-color: #aaaaaa;
     border-radius: 0 0 10px 0;
 }
 
@@ -766,6 +792,14 @@ border-radius: 0 0 0 10px;
 
 
 
+
+
+/* <<< 선택불가 css색 변경을 위해 class 추가함! */
+.main_seat .seat_table tbody tr td.seat_class.banned{
+    background: #cccccc;
+}
+
+
 /* 상훈 css */
 
 .ticket_body{
@@ -796,15 +830,11 @@ border-radius: 0 0 0 10px;
     font-weight: 500;
     padding-right: 20px;
     text-align: center;
-<<<<<<< HEAD
     height: 27px;
-=======
->>>>>>> 9069a35 (2025-10-13 오전)
 }
 .main_seat .seat_table tbody tr td.seat_class{
     cursor: pointer;
     display: inline-block;
-<<<<<<< HEAD
     margin: 0 1px;
     width: 25px;
     height: 22px;
@@ -817,40 +847,22 @@ border-radius: 0 0 0 10px;
 }
 /* 좌석표 마우스오버/선택한좌석 */
 /* 2025 - 10 - 11 hover 이벤트는 selected class를 통해서 배경색 변경  */
-/* .main_seat .seat_table tbody tr td.seat_class:hover {
+/* .main_seat .seat_table tbody tr td.seat_class:hover{
     background-color: #503396;
     color: #fff;
 } */
 .selected,
-.clicked {
+.clicked{
     /* !important = 우선순위라는뜻 */
     background-color: #503396 !important;
     color: #ffffff !important;
 }
 /* .selected{
-=======
-    margin: 0 3px;
-    width: 23px;
-    height: 23px;
-    text-align: center;
-    /* padding: 10px; */
-    font-size: 11px;
-    color: #3d9dbb;
-    border: 1px solid #3d9dbb;
-    /* background-color: #3d9dbb; */
-}
-/* 좌석표 마우스오버/선택한좌석 */
-.selected{
->>>>>>> 9069a35 (2025-10-13 오전)
     background-color: #503396;
     }
 .clicked{
     background-color: #503396;
-<<<<<<< HEAD
 } */
-=======
-}
->>>>>>> 9069a35 (2025-10-13 오전)
 
 /* 선택좌석 */
 .seat-selection .select_seat{
@@ -923,18 +935,33 @@ border-radius: 0 0 0 10px;
 .p_modal .p_Btn{
     display: flex;
     justify-content: center;
+    gap: 5px;
 }
 .p_modal .p_Btn button{
     padding: 6px 15px;
     border: none;
     border-radius: 5px;
     font-size: 16px;
-    background-color: #503396;
-    color: #f2f4f5;
-    margin: 0 20px 20px 20px;
+    margin: 0 0 20px 0;
     cursor: pointer;
     outline: none;
 }
-.p_modal .p_Btn button:hover{
+.p_modal .p_Btn button.offBtn_yes{
+    color: #f2f4f5;
+    background-color: #503396;
+}
+.p_modal .p_Btn button.offBtn_yes:hover{
     background-color: #301866;
+}
+.p_modal .p_Btn .offB_n .offBtn_no{
+    display: none;
+}
+.p_modal .p_Btn .offB_n .offBtn_no.active{
+    display: block;
+    background-color: transparent;
+    border: 1px solid #503396;
+    color: #503396;
+}
+.p_modal .p_Btn button.offBtn_no.active:hover{
+    background-color: #ede9f1;
 }
