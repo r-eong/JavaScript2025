@@ -1,11 +1,15 @@
 // 령경 js 코드 
 
 
-// 요소 선택
+// nav 좌측 메뉴 모달
+// SITEMAP 버튼
 let sitemapBtn = document.querySelector('.sitemapBtn');
-let sitemapModal = document.querySelector('.modal');         // SITEMAP 모달
+// SITEMAP 모달
+let sitemapModal = document.querySelector('.modal');
+// 검색 버튼
 let searchBtn = document.querySelector('.searchBtn');
-let searchModal = document.querySelector('.search_modal');   // 검색 모달
+// 검색 모달
+let searchModal = document.querySelector('.search_modal');
 
 // SITEMAP 버튼 클릭
 sitemapBtn.addEventListener('click', () => {
@@ -226,14 +230,37 @@ timeBtn01.addEventListener('click',() =>{
     timeBtn02.classList.toggle('active');
 })
 
+// 관람인원 선택 오버레이/모달
+let seatOverlay = document.querySelector('.seat_overlay');
+seatOverlay.classList.add('active');
+seatOverlay.addEventListener('click', () =>{
+    seatOverlay.classList.remove('active');
+})
 
+// ---------------------------------------------------------------
 
+// 푸터
 
+// 극창 찾기
+// 극장찾기 버튼
+let theaterSearchBtn = document.querySelector('.theater_search_btn');
+// 극장찾기 모달
+let theaterSearchModal = document.querySelector('.theater_search_modal');
+
+// 버튼 클릭시 모달 켜기
+theaterSearchBtn.addEventListener('click', () => {
+    theaterSearchModal.classList.toggle('active');
+    overlay.classList.add('active');
+})
+// x버튼 누를시 모달 닫기
+function closeTheaterModal(){
+    theaterSearchModal.classList.remove('active');
+    overlay.classList.remove('active');
+}
 
 
 
 // ---------------------------------------------------------------
-
 
 
 
@@ -319,7 +346,7 @@ function seatSetF(){
         let line_text = String.fromCharCode('A'.charCodeAt() + i)
         for(let j = 0; j< maxseat_y; j++){
                 //조건 -> 남은 인원이 1명이고, 홀수칸이며, clicked안된 상태라면 실행
-            if(!(seat_array[total].classList.contains('clicked')) && ( (soloSeatBool(remain_person) && total%2==1) || (total>0 && total%2==1 && seat_array[total-1].classList.contains('clicked')))){
+            if( total%2==1 && !(seat_array[total-1].classList.contains('clicked')) && ((soloSeatBool(remain_person) ))){
                 //texcontent를 x로 설정
                 seat_array[total].textContent = 'x';
                 seat_array[total].classList.add('banned'); // <<< 선택불가 css색 변경을 위해 class 추가함!
@@ -373,7 +400,8 @@ function seatAddEventF(){
             this.classList.add('clicked')
             
             //선택된 시트 배열에 좌석 content값 대입
-            seat_selected.push(this.textContent)
+
+            if(i%2 == 0) seat_selected.push(this.textContent)
             //만약 1인이 아닐경우        
             if(soloSeatBool(remain_person) == false){
                 //다음배열에도 동일한 클래스 추가 및 값 증가
@@ -382,6 +410,7 @@ function seatAddEventF(){
                 select_count++;
                 remain_person--;
             }
+            if(i%2 == 1) seat_selected.push(this.textContent)
             
             select_count++;
             remain_person--;
@@ -390,9 +419,12 @@ function seatAddEventF(){
             
         }
         //남은 인원이 0 일때
-        else if(!(this.textContent == 'x')){
-            modal_base.innerHTML = `관람하실 인원을 먼저 선택해주세요.`;
-            
+        else if(!(this.textContent == 'x') && select_count+remain_person == 0){
+            modal_text.innerHTML = `관람하실 인원을 먼저 선택해주세요.`;
+            modal_base.classList.add('active');
+            overlay.classList.add('active');
+        }else{
+            modal_text.innerHTML = `좌석 선택이 완료되었습니다.`;
             modal_base.classList.add('active');
             overlay.classList.add('active');
         }
@@ -495,7 +527,7 @@ function resultPrice(){
                     break;
             }
         }
-        total_price.innerHTML = result_price +'원';
+        total_price.innerHTML = result_price.toLocaleString('ko-KR') +'원';
         nextBtn.style.backgroundColor = '#3d9dbb';
     }
     else if(select_count !=0){
@@ -503,13 +535,10 @@ function resultPrice(){
         nextBtn.style.backgroundColor = '#aaaaaa';
     }
     else{
-        total_price.innerHTML = result_price +'원';
+        total_price.innerHTML = result_price.toLocaleString('ko-KR') +'원';
         nextBtn.style.backgroundColor = '#aaaaaa';
     }
         div_person.innerText = div_result;
 
     
 }
-
-
-

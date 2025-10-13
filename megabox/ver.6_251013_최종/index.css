@@ -67,22 +67,30 @@ body{
     /* margin-bottom: 10px; */
 }
 /* 헤더 하단 아이콘 전체 */
-.head .nav ul li > button{
-    width: 30px;
-    height: 30px;
+.head .nav ul li button{
     border: none;
     background-color: transparent;
     cursor: pointer;
-    /* background-size: cover; */
     display: inline-flex;
     align-items: center;
     justify-content: center;
+}
+.nav .sitemapBtn,
+.nav .searchBtn{
+    margin-right: 20px;
+}
+.nav .scheduleBtn img,
+.nav .mymegaBtn img{
+    margin-left: 20px;
+}
+.nav .scheduleBtn img{
+    width: 21px;
 }
 
 .nav ul li.on:hover::before{
     content: '';
     width: 100%;
-    height: 5px;
+    height: 4px;
     background-color: #3d9dbb;
     display: inline-block;
     position: absolute;
@@ -105,6 +113,8 @@ body{
     position: relative;
     cursor: pointer;
     padding-bottom: 15px;
+    display: flex;
+    
 }
 
 /* 서브 메뉴(navSUB) 숨김 기본 상태 */
@@ -144,7 +154,7 @@ body{
 /* nav 좌측 3줄메뉴 버튼 */
 /* 버튼 이미지 전환 */
 .sitemapBtn img{
-    width: 24px;
+    width: 20px;
     content: url('img/ico-sitemap.png');
 }
 .sitemapBtn.active img{
@@ -180,7 +190,7 @@ body{
 }
 
 .modal_content{
-    background: #333;
+    background: #333333;
     color: #fff;
     width: 100%;
     padding: 35px;
@@ -228,7 +238,7 @@ body{
     width: 160px;
 }
 .sitemap_grid a{
-    color: #ccc;
+    color: #cccccc;
     text-decoration: none;
     font-size: 15px;
 }
@@ -392,7 +402,7 @@ h2{
 .sec{
     margin: 0 auto;
     width: 1100px;
-    min-height: 845px;
+    min-height: 700px;
     display: flex;
     justify-content: space-between;
 }
@@ -760,6 +770,7 @@ border-radius: 0 0 0 10px;
 /* 회사소개 ~ 윤리경영 */
 .foot .foot_top > ul li{
     margin-right: 15px;
+    cursor: pointer;
 }
 .foot .foot_top > a{
     border: 1px solid #cccccc;
@@ -770,6 +781,13 @@ border-radius: 0 0 0 10px;
     gap: 10px;
     color: #424242;
     text-decoration: none;
+}
+.foot .foot_top > ul li a{
+    text-decoration: none;
+    color: #222222;
+}
+.foot .foot_top > ul li a:hover{
+    border-bottom: 1px solid #424242;
 }
 /* ---------------------------------------- */
 /* 푸터 아랫줄 */
@@ -887,6 +905,38 @@ border-radius: 0 0 0 10px;
 /* ---------------------------------------- */
 
 /* 모달 */
+
+/* 관람인원을 선택하십시오 */
+.main_seat{
+    position: relative;
+}
+.seat_overlay{
+    visibility: hidden;
+    background-color: rgba(0,0,0,0.6);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+}
+.seat_overlay.active{
+    visibility: inherit;
+}
+.seat_overlay img{
+    width: 25px;
+    height: 24px;
+    margin-top: 20px;
+}
+.seat_overlay p{
+    color: #ffffff;
+    margin-top: 10px;
+    font-size: 17px;
+}
+
 /* on/ff */
 .p_modal{
     background-color: #ffffff;
@@ -900,6 +950,7 @@ border-radius: 0 0 0 10px;
 }
 .p_modal.active{
     visibility: inherit;
+    min-width: 300px;
 }
 .overlay{
     background-color: rgba(0,0,0,0.7);
@@ -964,4 +1015,77 @@ border-radius: 0 0 0 10px;
 }
 .p_modal .p_Btn button.offBtn_no.active:hover{
     background-color: #ede9f1;
+}
+
+
+
+/* -------------------------------------- */
+
+
+/* 극장 찾기 */
+.theater_search_modal{
+    display: none;
+    background-color: #333333;
+    /* color: #cccccc; */
+    padding: 40px 0;
+    width: 100%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 200;
+}
+.theater_search_modal.active{
+    display: block;
+}
+.theater_search_modal .theater_search_modalIn .theater_search_head{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.theater_search_modal h3,
+.theater_search_modal span{
+    color: #ffffff;
+    font-weight: normal;
+}
+.theater_search_modal h3{
+    font-size: 22px;
+    margin-bottom: 30px;
+}
+.theater_search_modal button{
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+.theater_search_modal .theater_search_modalIn{
+    width: 1100px;
+    margin: 0 auto;
+}
+.theater_search_modal .theater_search_modalIn ul{
+    border: 1px solid #424242;
+    padding: 30px;
+}
+.theater_search_modal .theater_search_modalIn ul li{
+    margin: 15px 0;
+    display: flex;
+}
+.theater_search_modal .theater_search_modalIn span{
+    display: block;
+    width: 180px;
+}
+.theater_search_modal .theater_search_modalIn .cinema_list{
+    width: 900px;
+}
+.theater_search_modal .theater_search_modalIn a{
+    text-decoration: none;
+    color: #cccccc;
+    font-size: 14px;
+    margin-right: 25px;
+    overflow-wrap: break-word;
+    display: inline-block;
+}
+.theater_search_modal .theater_search_modalIn a:hover{
+    color: #3d9dbb;
+    border-bottom: 1px solid #3d9dbb;
 }
