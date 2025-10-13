@@ -1,5 +1,56 @@
 // 령경 js 코드 
 
+// nav 메뉴 마우스 오버
+
+
+
+
+// 헤더 나비 - 메뉴 마우스 오버 모달
+
+// // 버튼과 이미지, 모달 요소를 가져오기
+// let sitemapBtn = document.querySelector('.sitemapBtn');
+// let changeImg = sitemapBtn.querySelector('img');
+// let modal = document.querySelector('.modal');
+
+// // 현재 모달이 열려 있는지 닫혀 있는지 저장할 변수
+// let mdOpen = false;
+
+// // 버튼 클릭 시 실행
+// sitemapBtn.addEventListener('click', function() {
+//     if (mdOpen === false) {
+//       // 모달 열기
+//       modal.style.display = 'flex';
+  
+//       // 버튼 이미지를 닫기(X) 버튼 이미지로 변경
+//       changeImg.src = 'img/btn-header-layer-close.png';
+  
+//       mdOpen = true;
+//     } else {
+//       // 모달 닫기
+//       modal.style.display = 'none';
+  
+//       // 버튼 이미지를 다시 사이트맵 아이콘으로 변경
+//       changeImg.src = 'img/ico-sitemap.png';
+  
+//       mdOpen = false;
+//     }
+//   });
+    
+// // 모달 배경 클릭 시 닫기
+// modal.addEventListener('click', function(e) {
+//     // 클릭한 곳이 modal(배경)일 때만 닫기
+//     if (e.target === modal) {
+//       modal.style.display = 'none';
+//       changeImg.src = 'img/ico-sitemap.png';
+//       mdOpen = false;
+//     }
+//   });
+  
+// // 검색 버튼 - 예메율 순, 메가박스 관객순 <class="searchBtn">
+// let searchBtn = document.querySelector('.sitemapModal');
+// let searchModal = document.querySelector('.searchModal');
+
+
 
 // 요소 선택
 let sitemapBtn = document.querySelector('.sitemapBtn');
@@ -87,6 +138,9 @@ document.querySelectorAll('.rank_item').forEach(item => {
     });
 
     // 마우스를 떼도 마지막으로 이미지 그대로
+    // title.addEventListener('mouseleave', () => {
+    //   poster.src = lastPoster;
+    // });
   });
 });
 
@@ -99,27 +153,63 @@ document.querySelectorAll('.rank_item').forEach(item => {
 // 섹션
 
 // 인원수 선택 버튼
+// 결과값 담을 변수
+// let peopleCount = 0;
 // 결과 출력할 위치
 let people = document.querySelectorAll('.people');
 // 버튼
+// let minus = document.querySelectorAll('.minus');
+// let plus = document.querySelectorAll('.plus');
 
 // 오버레이
 let overlay = document.querySelector('.overlay');
 // 모달창
-let modal_base = document.querySelector('.p_modal');
+let p_modal = document.querySelector('.p_modal');
 
 // -
 let people_count= [0,0,0,0];
-let modal_text = document.querySelector('.md_p');
+let md_p = document.querySelector('.p_modal .md_main .md_p');
 let result = 0;
+
+
+
+// 초기화 버튼
+// function resetBtn(resteIndex){
+//     remain_person = 0;
+//     select_count = 0;
+    
+//     // 숫자 리셋 - span
+//     for(let i=0; i<people_count.length; i++){
+//         people[i].innerHTML = resteIndex;
+//         console.log('숫자배열', people[i])
+//     }
+
+//     // 좌석
+//     let seatArr =  document.querySelectorAll('.seat_class');
+//     // 좌석 리셋
+//     for(let j=0; j<seatArr.length; j++){
+//         seatArr[j].classList.remove('clicked');
+//     }
+    
+//     let select_seat = document.querySelectorAll('.select_seat');
+
+//     for(let i = 0; i < select_seat.length; i++){
+//         //테이블 초기화
+//         select_seat[i].classList.remove('selected');
+//         select_seat[i].textContent = '-';
+//     }
+// }
+
 
 function minusBtn(minusIndex){
     // 전체 취소
     if(people_count[minusIndex] <= select_count && people_count[minusIndex] > 0){
-
+            
+            // people_count[minusIndex] = 0;
+            // remain_person = 0;
         offBtnNo.classList.add('active');
-        modal_text.innerHTML = `선택하신 좌석을 모두 취소하고 다시 선택하시겠습니까?`;
-        modal_base.classList.add('active');
+        md_p.innerHTML = `선택하신 좌석을 모두 취소하고 다시 선택하시겠습니까?`;
+        p_modal.classList.add('active');
         overlay.classList.add('active');
             
     }else if( people_count[minusIndex] > 0){
@@ -150,20 +240,21 @@ function plusBtn(plusIndex){
         console.log('플러스2: '+people[plusIndex].textContent);
         if(people_count[plusIndex] === 1){
             
-            modal_text.innerHTML = `◆ 경로 : 만 65세 이상(신분증) <br/><br/>
+            md_p.innerHTML = `◆ 경로 : 만 65세 이상(신분증) <br/><br/>
             경로요금은 만65세 이상 고객에게만 적용되며, 상영관 입장시 
             본인신분증을 제시해 주시기 바랍니다(*미지참시 입장 제한)
             <br/><br/>
             *경로선택 시 추가 할인이 제한될 수 있습니다`;
             
-            modal_base.classList.add('active');
+            console.log(md_p);
+            p_modal.classList.add('active');
             overlay.classList.add('active');
         }
     }
     }else{
         console.log(`인원선택은 총 8명까지 가능합니다.`);
-        modal_text.innerHTML = `인원선택은 총 8명까지 가능합니다.`;
-        modal_base.classList.add('active');
+        md_p.innerHTML = `인원선택은 총 8명까지 가능합니다.`;
+        p_modal.classList.add('active');
         overlay.classList.add('active');
     }
     // 우대 1이상 선택 안내창
@@ -172,7 +263,7 @@ function plusBtn(plusIndex){
         console.log('플러스2: '+people[plusIndex].textContent);
         if(people_count[plusIndex] === 1){
             
-            modal_text.innerHTML = `※만 65세이상 고객님께서는 [경로]발권 부탁드립니다
+            md_p.innerHTML = `※만 65세이상 고객님께서는 [경로]발권 부탁드립니다
             (*지점별 상이)<br/><br/>
             ◆ 우대요금은 장애인 고객에게 적용되며, 상영관 입장 시 본인확인 
             증빙서류를 제시해 주시기 바랍니다.<br/>
@@ -185,8 +276,8 @@ function plusBtn(plusIndex){
             *우대선택 시 추가 할인이 제한될 수 있습니다.<br/>
             *국가유공자증에 한하며, 국가유공자 유족증 등은 할인이 불가합니다.`;
             
-
-            modal_base.classList.add('active');
+            console.log(md_p);
+            p_modal.classList.add('active');
             overlay.classList.add('active');
         }
     }
@@ -204,16 +295,27 @@ let offBtnYes = document.querySelector('.offBtn_yes');
             offBtnNo.classList.remove('active');
             reset();
         }
-        modal_base.classList.remove('active');
+        p_modal.classList.remove('active');
         overlay.classList.remove('active');
     })
     offBtnNo.addEventListener('click',() => {
         offBtnNo.classList.remove('active');
-        modal_base.classList.remove('active');
+        p_modal.classList.remove('active');
         overlay.classList.remove('active');
     })
 
 
+// function plusBtn(){
+//     if(people[2].textContent >= 1){
+//         md_p.innerHTML = `◆ 경로 : 만 65세 이상(신분증) <br/><br/>
+//         경로요금은 만65세 이상 고객에게만 적용되며, 상영관 입장시 
+//         본인신분증을 제시해 주시기 바랍니다(*미지참시 입장 제한)
+//         <br/><br/>
+//         *경로선택 시 추가 할인이 제한될 수 있습니다`;
+//         console.log(md_p);
+//     }
+
+// }
 
 // 섹션 우측 시간 토글
 // 기존 시간
@@ -242,6 +344,8 @@ timeBtn01.addEventListener('click',() =>{
 
 // 전역 변수 -------------------------------------------------------------------------
 
+//좌석 배열 설정
+let seat = Array.from(Array(), ()=> new Array());
 //행, 열 갯수 지정
 let maxseat_x = 10; let maxseat_y = 10; 
 let seat_selected = []; //선택된 좌석 저장  
@@ -319,7 +423,7 @@ function seatSetF(){
         let line_text = String.fromCharCode('A'.charCodeAt() + i)
         for(let j = 0; j< maxseat_y; j++){
                 //조건 -> 남은 인원이 1명이고, 홀수칸이며, clicked안된 상태라면 실행
-            if(!(seat_array[total].classList.contains('clicked')) && ( (soloSeatBool(remain_person) && total%2==1) || (total>0 && total%2==1 && seat_array[total-1].classList.contains('clicked')))){
+            if((soloSeatBool(remain_person) && total%2==1) && !(seat_array[total].classList.contains('clicked'))){
                 //texcontent를 x로 설정
                 seat_array[total].textContent = 'x';
                 seat_array[total].classList.add('banned'); // <<< 선택불가 css색 변경을 위해 class 추가함!
@@ -391,9 +495,10 @@ function seatAddEventF(){
         }
         //남은 인원이 0 일때
         else if(!(this.textContent == 'x')){
-            modal_base.innerHTML = `관람하실 인원을 먼저 선택해주세요.`;
+            md_p.innerHTML = `관람하실 인원을 먼저 선택해주세요.`;
             
-            modal_base.classList.add('active');
+            console.log(md_p);
+            p_modal.classList.add('active');
             overlay.classList.add('active');
         }
     }
@@ -408,9 +513,7 @@ function seatAddEventF(){
 
 let clickF = () => {
 
-    
     let select_seat = document.querySelectorAll('.select_seat')
-    console.log(seat_selected)
 
     for(let i = 0; i < select_seat.length; i++){
         //테이블 초기화
@@ -461,8 +564,6 @@ function reset(){
     remain_person = 0;
     people_count = [0,0,0,0];
     for(let i = 0; i<people.length; i++) people[i].innerHTML = people_count[i];
-    seatSetF()
-    seatAddEventF()
     resultPrice()
 }
 
@@ -471,7 +572,7 @@ function resultPrice(){
     let div_person = document.querySelector('.div_person')
     let result_price = 0;
     let nextBtn = document.querySelector('#nextBtn');
-    let div_result = '　';
+let div_result = '　';
     if(remain_person == 0 && select_count != 0){
         
         for(let i=0; i<people_count.length; i++){
@@ -506,7 +607,7 @@ function resultPrice(){
         total_price.innerHTML = result_price +'원';
         nextBtn.style.backgroundColor = '#aaaaaa';
     }
-        div_person.innerText = div_result;
+    div_person.innerText = div_result;
 
     
 }
