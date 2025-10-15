@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setTimeOut</title>
+</head>
+<body>
+    <script>
+        // setTimeOut()은 일정 시간이 지난 후 한 번만 실행하는 함수
+        // clearRimeOut()은 setTimeOut()함수를 취소하는 함수
+        // 시간 1ms = 0.001초 10ms = 0.01초
+        // setTimeOut(() => {실행구문}, 일정시간 지정)
+        let timer = setTimeout(() => {
+            // 실행문
+            console.log('3초 후 1번만 실행');
+        }, 3000)
+
+        // 2초 후 취소
+        setTimeout(() => {
+            clearTimeout(timer);
+            console.log('2초 후 취소');
+        }, 2000)
+    </script>
+</body>
+</html>

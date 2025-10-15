@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setTimeOut</title>
+</head>
+<body>
+    <script>
+        // setInterval()은 지정한 시간마다 주기적으로 반복하는 함수
+        // clearInterval()은 setUnterval() 함수 반복을 멈추는 함수
+        // setInterval(() => {실행구문}, 일정시간 지정)
+
+        let count = 0;
+        let timer =setInterval(() => {
+            count++;
+            console.log(`${count} 1초마다 실행`);
+
+            if(count === 5){
+                clearInterval(timer);
+                console.log('5번 실행 후 종료');
+            }
+        }, 1000)
+    </script>
+</body>
+</html>

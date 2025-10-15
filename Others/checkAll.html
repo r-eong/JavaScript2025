@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전체 선택 체크박스</title>
+</head>
+<body>
+    <label><input type="checkbox" id="checkAll" /> 전체 선택</label>
+    <ul>
+        <li>  
+            <label><input type="checkbox" class="item-check" /> 항목 A</label>
+        </li>
+        <li>
+            <label><input type="checkbox" class="item-check" /> 항목 B</label>
+        </li>
+        <li>
+            <label><input type="checkbox" class="item-check" /> 항목 C</label>
+        </li>
+    </ul>
+    <script>
+        // 전체선택
+        let checkAll = document.getElementById('checkAll');
+        // 항목선택
+        let itemCheck = document.getElementsByClassName('item-check');
+
+        // change = checkAll 이 변경되는 사건이 일어나면
+        checkAll.addEventListener('change', () => {
+            // 체크를 해서 변경되는 사건이 일어나면
+            // itemCheck의 모든 ckeckbox의 체크가 ckecked로 지정되어야함
+            // 현재 itemCheck의 갯수는 3개
+            for(let i=0; i<itemCheck.length; i++){
+                // input의 첫 번째를 checked 로 지정
+                // ┖> <input type="checkbox" class="item-check" checked /> 가 됨
+                itemCheck[i].checked = checkAll.checked;
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        .btn{
+            width: 300px;
+        }
+        .btn span{
+            background-color: #cccccc;
+            padding: 5px;
+            width: 100px;
+            display: inline-block;
+            text-align: center;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn span.active{
+            background-color: #ffffff;
+            border: 1px solid #000000;
+        }
+    </style>
+</head>
+<body>
+    <div class="btn">
+        <span>공지사항</span>
+        <span>갤러리</span>
+    </div>
+    <script>
+        // 요즘 사용하는 방식으로 HTML 모두 로드 된 뒤 실행되는 코드
+        $(function(){
+            $('.btn span').click(function(){
+                // 클릭한 자기 자신 span에 active 넣기
+                // this = span
+                $(this).addClass('active');
+                // 클릭한 자기자신 형제 span은 active 빼기
+                $(this).siblings().removeClass('active');
+            })
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DropDown 메뉴</title>
+    <style>
+      /* 전체 드롭다운 영역 */
+      .dropdown {
+        position: relative;
+        display: inline-block;
+        font-family: 'Pretendard', sans-serif;
+      }
+      /* 버튼 스타일 */
+      .dropdown-btn {
+        background: none;
+        border: none;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      /* 화살표에 transition */
+      .arrow {
+        font-size: 12px;
+        transition: transform 0.3s;
+      }
+
+      /* 드롭다운 메뉴 기본 숨김 */
+      .dropdown-menu {
+        position: absolute;
+        top: 120%;
+        left: 0;
+        list-style: none;
+        padding: 10px 15px;
+        margin: 0;
+        background: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 6px;
+        display: none; /* 기본 숨김 */
+        width: 150px;
+        outline: none;
+      }
+      /* 메뉴 보이기 */
+      .dropdown-menu.show {
+        display: block;
+        /* animation: fadeIn 0.3s; */
+      }
+      /* 화살표 뒤집기 */
+      .arrow.up {
+        transform: rotate(180deg);
+      }
+      /* 메뉴 항목 */
+      .dropdown-menu li {
+        padding: 8px 0;
+        cursor: pointer;
+        color: #444;
+      }
+      .dropdown-menu li:hover {
+        color: #000;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="dropdown">
+      <button class="dropdown-btn" id="dropdownBtn">
+        고객센터 <span class="arrow">▼</span>
+      </button>
+      <ul class="dropdown-menu" id="dropdownMenu">
+        <li>공지사항</li>
+        <li>뉴스/이벤트</li>
+        <li>상품 리뷰</li>
+        <li>상품 문의</li>
+        <li>대량구매/도매문의</li>
+        <li>기타문의</li>
+      </ul>
+    </div>
+
+    <script>
+      const dropdownBtn = document.getElementById('dropdownBtn');
+      const dropdownMenu = document.getElementById('dropdownMenu');
+      const arrow = document.querySelector('.arrow');
+
+      dropdownBtn.addEventListener('click', () => {
+        // 메뉴 열고 닫기
+        dropdownMenu.classList.toggle('show');
+        // 화살표 회전
+        arrow.classList.toggle('up');
+      });
+
+      
+    </script>
+  </body>
+</html>

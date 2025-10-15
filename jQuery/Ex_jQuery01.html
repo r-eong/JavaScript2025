@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제이쿼리 링크하기</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        .container{
+            width: 300px;
+        }
+        .container a{
+            display: inline-block;
+            color: #000;
+            text-decoration: none;
+            background-color: #ddd;
+            width: 70px;
+            text-align: center;
+            padding: 5px;
+            border-radius: 5px;
+        }
+        .container div{
+            background-color: dodgerblue;
+            height: 300px;
+            margin-top: 10px;
+            width: 220px;
+            color: #fff;
+            text-align: center;
+            line-height: 200px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a class="show-btn" href="#">보이기</a>
+        <a class="hide-btn" href="#">감추기</a>
+        <a class="toggle-btn" href="#">토글</a>
+        <div>BOX</div>
+    </div>
+    <script>
+        // 요즘 사용하는 방식으로 HTML 모두 로드 된 뒤 실행되는 코드
+        $(function(){
+            // 보이기
+            $('.show-btn').click(function(){
+                $('div > div').show();
+            })
+            // 감추기
+            $('.hide-btn').click(function(){
+                $('div > div').hide();
+            })
+            // 토글
+            $('.toggle-btn').click(function(){
+                $('div > div').toggle();
+            })
+        })
+    </script>
+</body>
+</html>
